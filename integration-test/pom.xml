@@ -23,11 +23,11 @@
     <groupId>org.apache.livy</groupId>
     <artifactId>livy-main</artifactId>
     <relativePath>../pom.xml</relativePath>
-    <version>0.7.1-incubating</version>
+    <version>0.7.1.3.2.2.0-1</version>
   </parent>
 
   <artifactId>livy-integration-test</artifactId>
-  <version>0.7.1-incubating</version>
+  <version>0.7.1.3.2.2.0-1</version>
   <packaging>jar</packaging>
 
   <properties>
@@ -109,6 +109,10 @@
           <groupId>org.apache.zookeeper</groupId>
           <artifactId>zookeeper</artifactId>
         </exclusion>
+            <exclusion>
+              <groupId>org.apache.logging.log4j</groupId>
+              <artifactId>log4j-1.2-api</artifactId>
+            </exclusion>
       </exclusions>
     </dependency>
 
@@ -297,6 +301,7 @@
             <LIVY_INTEGRATION_TEST>true</LIVY_INTEGRATION_TEST>
             <SPARK_HOME>${project.build.directory}/${spark.bin.name}</SPARK_HOME>
             <LIVY_TEST_THRIFT_ENABLED>${livy.test.thrift.enabled}</LIVY_TEST_THRIFT_ENABLED>
+            <PYSPARK_ROW_FIELD_SORTING_ENABLED>true</PYSPARK_ROW_FIELD_SORTING_ENABLED>
           </environmentVariables>
           <systemProperties>
             <cluster.spec>${cluster.spec}</cluster.spec>

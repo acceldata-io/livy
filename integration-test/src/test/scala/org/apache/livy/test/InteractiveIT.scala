@@ -37,7 +37,8 @@ class InteractiveIT extends BaseIntegrationTestSuite {
       s.run("val scalaVersion = util.Properties.versionString").result().left.foreach(info(_))
       s.run("1+1").verifyResult("res0: Int = 2\n")
       s.run("""sc.getConf.get("spark.executor.instances")""").verifyResult("res1: String = 1\n")
-      s.run("val sql = new org.apache.spark.sql.SQLContext(sc)").verifyResult(
+
+      s.run("val sql = spark.sqlContext").verifyResult(
         ".*" + Pattern.quote(
         "sql: org.apache.spark.sql.SQLContext = org.apache.spark.sql.SQLContext") + ".*")
       s.run("abcde").verifyError(evalue = ".*?:[0-9]+: error: not found: value abcde.*")
@@ -47,7 +48,7 @@ class InteractiveIT extends BaseIntegrationTestSuite {
       // Verify query submission
       s.run(s"""val df = spark.createDataFrame(Seq(("jerry", 20), ("michael", 21)))""")
         .verifyResult(".*" + Pattern.quote("df: org.apache.spark.sql.DataFrame") + ".*")
-      s.run("df.registerTempTable(\"people\")").result()
+      s.run("df.createOrReplaceTempView(\"people\")").result()
       s.run("SELECT * FROM people", Some(SQL)).verifyResult(".*\"jerry\",20.*\"michael\",21.*")
 
       // Verify Livy internal configurations are not exposed.
@@ -104,7 +105,7 @@ class InteractiveIT extends BaseIntegrationTestSuite {
       s.run("1+1").verifyResult(startsWith(s"[$count] 2"))
       s.run("""localDF <- data.frame(name=c("John", "Smith", "Sarah"), age=c(19, 23, 18))""")
         .verifyResult(null)
-      s.run("df <- createDataFrame(sqlContext, localDF)").verifyResult(null)
+      s.run("df <- createDataFrame(localDF)").verifyResult(null)
       s.run("printSchema(df)").verifyResult(literal(
         """|root
           | |-- name: string (nullable = true)

@@ -22,6 +22,8 @@ import java.net.URI
 import java.util.concurrent.{TimeUnit, Future => JFuture}
 import javax.servlet.http.HttpServletResponse
 
+import scala.util.Properties
+
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.scala.DefaultScalaModule
 import org.scalatest.BeforeAndAfterAll
@@ -31,6 +33,7 @@ import org.apache.livy.client.common.HttpMessages._
 import org.apache.livy.sessions.SessionKindModule
 import org.apache.livy.test.framework.BaseIntegrationTestSuite
 import org.apache.livy.test.jobs.spark2._
+import org.apache.livy.utils.LivySparkUtils
 
 class Spark2JobApiIT extends BaseIntegrationTestSuite with BeforeAndAfterAll with Logging {
 
@@ -50,7 +53,8 @@ class Spark2JobApiIT extends BaseIntegrationTestSuite with BeforeAndAfterAll wit
     livyClient.connectSession(sessionId).stop()
   }
 
-  test("create a new session and upload test jar") {
+  scalaTest("create a new session and upload test jar") {
+    val prevSessionCount = sessionList().total
     val tempClient = createClient(livyEndpoint)
 
     try {
@@ -78,13 +82,13 @@ class Spark2JobApiIT extends BaseIntegrationTestSuite with BeforeAndAfterAll wit
     }
   }
 
-  test("run spark2 job") {
+  scalaTest("run spark2 job") {
     assume(client != null, "Client not active.")
     val result = waitFor(client.submit(new SparkSessionTest()))
     assert(result === 3)
   }
 
-  test("run spark2 dataset job") {
+  scalaTest("run spark2 dataset job") {
     assume(client != null, "Client not active.")
     val result = waitFor(client.submit(new DatasetTest()))
     assert(result === 2)
@@ -102,5 +106,19 @@ class Spark2JobApiIT extends BaseIntegrationTestSuite with BeforeAndAfterAll wit
 
   private def createClient(uri: String): LivyClient = {
     new LivyClientBuilder().setURI(new URI(uri)).build()
+  }
+
+  protected def scalaTest(desc: String)(testFn: => Unit): Unit = {
+    test(desc) {
+      val livyConf = new LivyConf()
+      val (sparkVersion, scalaVersion) = LivySparkUtils.sparkSubmitVersion(livyConf)
+      val formattedSparkVersion = LivySparkUtils.formatSparkVersion(sparkVersion)
+      val versionString =
+        LivySparkUtils.sparkScalaVersion(formattedSparkVersion, scalaVersion, livyConf)
+
+      assume(versionString == LivySparkUtils.formatScalaVersion(Properties.versionNumberString),
+        s"Scala test can only be run with ${Properties.versionString}")
+      testFn
+    }
   }
 }
