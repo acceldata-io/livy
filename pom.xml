@@ -1064,8 +1064,8 @@
         <spark.scala-2.12.version>3.0.0</spark.scala-2.12.version>
         <spark.scala-2.11.version>2.4.5</spark.scala-2.11.version>
         <spark.version>${spark.scala-2.11.version}</spark.version>
-        <netty.spark-2.12.version>4.1.47.Final</netty.spark-2.12.version>
-        <netty.spark-2.11.version>4.1.47.Final</netty.spark-2.11.version>
+        <netty.spark-2.12.version>4.1.77.Final</netty.spark-2.12.version>
+        <netty.spark-2.11.version>4.1.77.Final</netty.spark-2.11.version>
         <netty.version>${netty.spark-2.11.version}</netty.version>
         <java.version>1.8</java.version>
         <py4j.version>0.10.9</py4j.version>
