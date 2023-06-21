@@ -102,13 +102,13 @@
     <kryo.version>4.0.2</kryo.version>
     <metrics.version>3.1.0</metrics.version>
     <mockito.version>1.10.19</mockito.version>
-    <netty.spark-2.11.version>4.1.17.Final</netty.spark-2.11.version>
-    <netty.spark-2.12.version>4.1.17.Final</netty.spark-2.12.version>
+    <netty.spark-2.11.version>4.1.77.Final</netty.spark-2.11.version>
+    <netty.spark-2.12.version>4.1.77.Final</netty.spark-2.12.version>
     <netty.version>${netty.spark-2.11.version}</netty.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <py4j.version>0.10.7</py4j.version>
     <scala-2.11.version>2.11.12</scala-2.11.version>
-    <scala-2.12.version>2.12.10</scala-2.12.version>
+    <scala-2.12.version>2.12.15</scala-2.12.version>
     <scala.binary.version>2.11</scala.binary.version>
     <scala.version>${scala-2.11.version}</scala.version>
     <scalatest.version>3.0.8</scalatest.version>
