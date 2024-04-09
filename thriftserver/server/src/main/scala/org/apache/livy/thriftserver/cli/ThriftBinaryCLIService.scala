@@ -23,11 +23,13 @@ import java.util.concurrent._
 import javax.net.ssl.SSLServerSocket
 
 import org.apache.hive.service.cli.HiveSQLException
+import org.apache.hive.service.cli.SessionHandle
 import org.apache.hive.service.rpc.thrift.TDownloadDataReq
 import org.apache.hive.service.rpc.thrift.TDownloadDataResp
 import org.apache.hive.service.rpc.thrift.TUploadDataReq
 import org.apache.hive.service.rpc.thrift.TUploadDataResp
 import org.apache.hive.service.server.ThreadFactoryWithGarbageCleanup
+import org.apache.thrift.TException
 import org.apache.thrift.TProcessorFactory
 import org.apache.thrift.protocol.{TBinaryProtocol, TProtocol}
 import org.apache.thrift.server.{ServerContext, TServer, TServerEventHandler, TThreadPoolServer}
@@ -178,14 +180,31 @@ class ThriftBinaryCLIService(override val cliService: LivyCLIService, val oomHoo
     info("Thrift server has stopped")
   }
 
-   override def DownloadData(req: TDownloadDataReq): TDownloadDataResp = {
-   // Added just avoid failureImplementation logic for downloading data
-   new TDownloadDataResp()
-   }
+  @throws[TException]
+  override def UploadData(req: TUploadDataReq): TUploadDataResp = {
+    val resp = new TUploadDataResp
+    try {
+      val sessionHandle = new SessionHandle(req.getSessionHandle)
+      cliService.uploadData()
+    } catch {
+      case e: Exception =>
+        warn("Error UploadData: ", e)
+        resp.setStatus(HiveSQLException.toTStatus(e))
+    }
+    resp
+  }
 
-   override def UploadData(req: TUploadDataReq): TUploadDataResp = {
-   // Added just avoid failureImplementation logic for downloading data
-   new TUploadDataResp()
-   }
-
+  @throws[TException]
+  def DownloadData(req: TDownloadDataReq): TDownloadDataResp = {
+    val resp = new TDownloadDataResp
+    try {
+      val sessionHandle = new SessionHandle(req.getSessionHandle)
+      cliService.downloadData()
+    } catch {
+      case e: Exception =>
+        warn("Error download data: ", e)
+        resp.setStatus(HiveSQLException.toTStatus(e))
+    }
+    resp
+  }
 }

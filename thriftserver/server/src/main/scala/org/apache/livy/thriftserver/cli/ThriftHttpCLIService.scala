@@ -21,6 +21,8 @@ import java.util.concurrent.SynchronousQueue
 import java.util.concurrent.TimeUnit
 import javax.ws.rs.HttpMethod
 
+import org.apache.hive.service.cli.HiveSQLException
+import org.apache.hive.service.cli.SessionHandle
 import org.apache.hive.service.rpc.thrift.TCLIService
 import org.apache.hive.service.rpc.thrift.TDownloadDataReq
 import org.apache.hive.service.rpc.thrift.TDownloadDataResp
@@ -28,6 +30,7 @@ import org.apache.hive.service.rpc.thrift.TUploadDataReq
 import org.apache.hive.service.rpc.thrift.TUploadDataResp
 import org.apache.hive.service.server.ThreadFactoryWithGarbageCleanup
 import org.apache.thrift.protocol.TBinaryProtocol
+import org.apache.thrift.TException
 import org.eclipse.jetty.server.HttpConfiguration
 import org.eclipse.jetty.server.HttpConnectionFactory
 import org.eclipse.jetty.server.Server
@@ -208,16 +211,33 @@ class ThriftHttpCLIService(
     }
   }
 
-  override def DownloadData(req: TDownloadDataReq): TDownloadDataResp = {
-    // Added just avoid failureImplementation logic for downloading data
-    new TDownloadDataResp()
-  }
-
+  @throws[TException]
   override def UploadData(req: TUploadDataReq): TUploadDataResp = {
-    // Added just avoid failureImplementation logic for downloading data
-    new TUploadDataResp()
+    val resp = new TUploadDataResp
+    try {
+      val sessionHandle = new SessionHandle(req.getSessionHandle)
+      cliService.uploadData()
+    } catch {
+      case e: Exception =>
+        warn("Error UploadData: ", e)
+        resp.setStatus(HiveSQLException.toTStatus(e))
+    }
+    resp
   }
 
+  @throws[TException]
+  def DownloadData(req: TDownloadDataReq): TDownloadDataResp = {
+    val resp = new TDownloadDataResp
+    try {
+      val sessionHandle = new SessionHandle(req.getSessionHandle)
+      cliService.downloadData()
+    } catch {
+      case e: Exception =>
+        warn("Error download data: ", e)
+        resp.setStatus(HiveSQLException.toTStatus(e))
+    }
+    resp
+  }
 }
 
 object ThriftHttpCLIService {
