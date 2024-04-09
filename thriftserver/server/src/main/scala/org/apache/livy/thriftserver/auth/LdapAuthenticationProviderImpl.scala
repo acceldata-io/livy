@@ -18,7 +18,7 @@ package org.apache.livy.thriftserver.auth
 
 import javax.security.sasl.AuthenticationException
 
-import org.apache.commons.lang.StringUtils
+import org.apache.commons.lang3.StringUtils
 import org.apache.hive.service.auth.PasswdAuthenticationProvider
 
 import org.apache.livy.thriftserver.auth.ldap._
