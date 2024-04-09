@@ -385,6 +385,16 @@ class LivyCLIService(server: LivyThriftServer)
   def getQueryId(opHandle: TOperationHandle): String = {
     throw new HiveSQLException("Operation not yet supported.")
   }
+
+  @throws[HiveSQLException]
+  def uploadData(): Nothing = {
+    throw new HiveSQLException("Operation not yet supported.")
+  }
+
+  @throws[HiveSQLException]
+  def downloadData(): Nothing = {
+    throw new HiveSQLException("Operation not yet supported.")
+  }
 }
 
 
