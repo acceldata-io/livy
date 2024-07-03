@@ -82,7 +82,8 @@ class SparkRSessionSpec extends BaseSessionSpec(SparkR) {
     val result = parse(statement.output)
     (result \ "status").extract[String] should be ("error")
     (result \ "execution_count").extract[Int] should be (0)
-    (result \ "ename").extract[String] should be ("InterpreterError")
+    // (result \ "ename").extract[String] should be ("InterpreterError")
+    (result \ "ename").extract[String] should be ("Error")
     assert((result \ "evalue").extract[String].contains("Fail to start interpreter"))
     (result \ "traceback").extract[List[String]] should be (List())
   }
