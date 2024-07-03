@@ -33,19 +33,8 @@ class SparkRSessionSpec extends BaseSessionSpec(SparkR) {
     val statement = execute(session)("1 + 2")
     statement.id should equal(0)
 
-    val result = parse(statement.output)
-    /**
-    val expectedResult = Extraction.decompose(Map(
-      "status" -> "ok",
-      "execution_count" -> 0,
-      "data" -> Map(
-        "text/plain" -> "[1] 3"
-      )
-    ))
-    */
     val expectedResult = "available"
     statement.state.toString should be (expectedResult)
-    //result should be (expectedResult)
   }
 
   it should "execute `x = 1`, then `y = 2`, then `x + y`" in withSession { session =>
