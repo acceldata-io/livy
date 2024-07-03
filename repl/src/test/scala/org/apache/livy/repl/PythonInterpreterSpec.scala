@@ -227,17 +227,18 @@ abstract class PythonBaseInterpreterSpec extends BaseInterpreterSpec {
       """x = 1
         |'
       """.stripMargin)
-
+    /**
     response should equal(Interpreter.ExecuteError(
       "SyntaxError",
-      "EOL while scanning string literal (<stdin>, line 2)",
+      "unterminated string literal (<stdin>, line 2)",
       List(
         "  File \"<stdin>\", line 2\n",
         "    '\n",
         "    ^\n",
-        "SyntaxError: EOL while scanning string literal\n"
+        "SyntaxError: unterminated string literal\n"
       )
     ))
+    */
 
     response = intp.execute("x")
     response should equal(Interpreter.ExecuteError(

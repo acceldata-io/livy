@@ -119,22 +119,27 @@ class Session(
   }
 
   def start(): Future[SparkEntries] = {
-    val future = Future {
-      changeState(SessionState.Starting)
+      val future = Future {
+      try {
+        changeState(SessionState.Starting)
+        // Always start SparkInterpreter after beginning, because we rely on SparkInterpreter to
+        // initialize SparkContext and create SparkEntries.
+        val sparkInterp = mockSparkInterpreter.getOrElse(new SparkInterpreter(sparkConf))
+        sparkInterp.start()
 
-      // Always start SparkInterpreter after beginning, because we rely on SparkInterpreter to
-      // initialize SparkContext and create SparkEntries.
-      val sparkInterp = mockSparkInterpreter.getOrElse(new SparkInterpreter(sparkConf))
-      sparkInterp.start()
-
-      entries = sparkInterp.sparkEntries()
-      require(entries != null, "SparkEntries object should not be null in Spark Interpreter.")
-      interpGroup.synchronized {
-        interpGroup.put(Spark, sparkInterp)
-      }
+        entries = sparkInterp.sparkEntries()
+        require(entries != null, "SparkEntries object should not be null in Spark Interpreter.")
+        interpGroup.synchronized {
+          interpGroup.put(Spark, sparkInterp)
+        }
 
       changeState(SessionState.Idle)
       entries
+    } catch {
+      case e: Exception =>
+        changeState(SessionState.Idle)
+        throw e
+    }
     }(interpreterExecutor)
 
     future.onFailure { case _ => changeState(SessionState.Error()) }(interpreterExecutor)

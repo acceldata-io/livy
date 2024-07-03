@@ -54,6 +54,7 @@ abstract class BaseSessionSpec(kind: Kind)
 
   protected def withSession(testCode: Session => Any): Unit = {
     val stateChangedCalled = new AtomicInteger()
+    sparkConf.setAppName("Test").setMaster("local")
     val session =
       new Session(rscConf, sparkConf, None, { _ => stateChangedCalled.incrementAndGet() })
     try {
