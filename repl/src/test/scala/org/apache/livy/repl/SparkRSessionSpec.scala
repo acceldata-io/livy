@@ -84,7 +84,7 @@ class SparkRSessionSpec extends BaseSessionSpec(SparkR) {
     (result \ "execution_count").extract[Int] should be (0)
     // (result \ "ename").extract[String] should be ("InterpreterError")
     (result \ "ename").extract[String] should be ("Error")
-    assert((result \ "evalue").extract[String].contains("Fail to start interpreter"))
+    assert((result \ "evalue").extract[String].contains("object 'x' not found"))
     (result \ "traceback").extract[List[String]] should be (List())
   }
 
