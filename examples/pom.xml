@@ -23,13 +23,13 @@
   <parent>
     <groupId>org.apache.livy</groupId>
     <artifactId>livy-main</artifactId>
-    <version>ODP-0.8.0-jdk11</version>
+    <version>0.8.0-incubating-rc2</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
 
   <groupId>org.apache.livy</groupId>
   <artifactId>livy-examples</artifactId>
-  <version>ODP-0.8.0-jdk11</version>
+  <version>0.8.0-incubating-rc2</version>
   <packaging>jar</packaging>
 
   <properties>

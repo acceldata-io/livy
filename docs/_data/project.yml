@@ -16,6 +16,6 @@
 # Apache Project configurations
 #
 name: Apache Livy
-version: ODP-0.8.0-jdk11
+version: 0.8.0-incubating-rc2
 
 podling: true

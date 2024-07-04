@@ -40,7 +40,7 @@ requirements = [
 
 setup(
     name='livy-python-api',
-    version="ODP-0.8.0-jdk11",
+    version="0.8.0-incubating-rc2",
     packages=["livy", "livy-tests"],
     package_dir={
         "": "src/main/python",
