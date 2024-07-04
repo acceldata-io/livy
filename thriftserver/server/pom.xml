@@ -22,7 +22,7 @@
   <parent>
     <artifactId>livy-main</artifactId>
     <groupId>org.apache.livy</groupId>
-    <version>0.8.0-incubating-rc2</version>
+    <version>ODP-0.8.0-jdk11</version>
     <relativePath>../../pom.xml</relativePath>
   </parent>
 
