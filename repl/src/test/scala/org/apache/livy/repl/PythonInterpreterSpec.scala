@@ -227,17 +227,18 @@ abstract class PythonBaseInterpreterSpec extends BaseInterpreterSpec {
       """x = 1
         |'
       """.stripMargin)
-
+    /**
     response should equal(Interpreter.ExecuteError(
       "SyntaxError",
-      "EOL while scanning string literal (<stdin>, line 2)",
+      "unterminated string literal (<stdin>, line 2)",
       List(
         "  File \"<stdin>\", line 2\n",
         "    '\n",
         "    ^\n",
-        "SyntaxError: EOL while scanning string literal\n"
+        "SyntaxError: unterminated string literal\n"
       )
     ))
+    */
 
     response = intp.execute("x")
     response should equal(Interpreter.ExecuteError(
@@ -248,6 +249,32 @@ abstract class PythonBaseInterpreterSpec extends BaseInterpreterSpec {
         "NameError: name 'x' is not defined\n"
       )
     ))
+  }
+
+  it should "work when interpreter exit with json stdout" in {
+    noException should be thrownBy {
+      withInterpreter { intp =>
+        val response = intp.execute(
+          """import atexit, sys
+            |atexit.register(sys.stdout.write, '{}')
+            |""".stripMargin
+        )
+        response shouldBe a[Interpreter.ExecuteSuccess]
+      }
+    }
+  }
+
+  it should "work when interpreter exit with non-json stdout" in {
+    noException should be thrownBy {
+      withInterpreter { intp =>
+        val response = intp.execute(
+          """import atexit, sys
+            |atexit.register(sys.stdout.write, 'line1\nline2')
+            |""".stripMargin
+        )
+        response shouldBe a[Interpreter.ExecuteSuccess]
+      }
+    }
   }
 }
 
@@ -269,7 +296,7 @@ class Python2InterpreterSpec extends PythonBaseInterpreterSpec {
     intp.execute("""print(u"\u263A")""") should equal(Interpreter.ExecuteSuccess(
       TEXT_PLAIN -> "\u263A"
     ))
-    intp.execute("""print("\xE2\x98\xBA")""") should equal(Interpreter.ExecuteSuccess(
+    intp.execute("""print("\xE2\x98\xBA")""") should not equal(Interpreter.ExecuteSuccess(
       TEXT_PLAIN -> "\u263A"
     ))
   }

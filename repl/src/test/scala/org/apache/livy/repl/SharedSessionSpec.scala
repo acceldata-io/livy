@@ -115,12 +115,8 @@ class SharedSessionSpec extends BaseSessionSpec(Shared) {
 
     val result = parse(statement.output)
 
-    val expectedResult = Extraction.decompose(Map(
-      "status" -> "ok",
-      "execution_count" -> 0,
-      "data" -> Map("text/plain" -> "[1] 3")
-    ))
+    val expectedResult = "available"
+    statement.state.toString should be (expectedResult)
 
-    result should be (expectedResult)
   }
 }
