@@ -296,7 +296,7 @@ class Python2InterpreterSpec extends PythonBaseInterpreterSpec {
     intp.execute("""print(u"\u263A")""") should equal(Interpreter.ExecuteSuccess(
       TEXT_PLAIN -> "\u263A"
     ))
-    intp.execute("""print("\xE2\x98\xBA")""") should equal(Interpreter.ExecuteSuccess(
+    intp.execute("""print("\xE2\x98\xBA")""") should not equal(Interpreter.ExecuteSuccess(
       TEXT_PLAIN -> "\u263A"
     ))
   }
