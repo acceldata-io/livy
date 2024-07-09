@@ -22,6 +22,10 @@ import java.util.concurrent.TimeUnit
 import javax.ws.rs.HttpMethod
 
 import org.apache.hive.service.rpc.thrift.TCLIService
+import org.apache.hive.service.rpc.thrift.TDownloadDataReq
+import org.apache.hive.service.rpc.thrift.TDownloadDataResp
+import org.apache.hive.service.rpc.thrift.TUploadDataReq
+import org.apache.hive.service.rpc.thrift.TUploadDataResp
 import org.apache.hive.service.server.ThreadFactoryWithGarbageCleanup
 import org.apache.thrift.protocol.TBinaryProtocol
 import org.eclipse.jetty.server.HttpConfiguration
@@ -203,6 +207,17 @@ class ThriftHttpCLIService(
       }
     }
   }
+
+  override def DownloadData(req: TDownloadDataReq): TDownloadDataResp = {
+    // Added just avoid failureImplementation logic for downloading data
+    new TDownloadDataResp()
+  }
+
+  override def UploadData(req: TUploadDataReq): TUploadDataResp = {
+    // Added just avoid failureImplementation logic for downloading data
+    new TUploadDataResp()
+  }
+
 }
 
 object ThriftHttpCLIService {
