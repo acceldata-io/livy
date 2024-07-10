@@ -23,6 +23,10 @@ import java.util.concurrent._
 import javax.net.ssl.SSLServerSocket
 
 import org.apache.hive.service.cli.HiveSQLException
+import org.apache.hive.service.rpc.thrift.TDownloadDataReq
+import org.apache.hive.service.rpc.thrift.TDownloadDataResp
+import org.apache.hive.service.rpc.thrift.TUploadDataReq
+import org.apache.hive.service.rpc.thrift.TUploadDataResp
 import org.apache.hive.service.server.ThreadFactoryWithGarbageCleanup
 import org.apache.thrift.TProcessorFactory
 import org.apache.thrift.protocol.{TBinaryProtocol, TProtocol}
@@ -173,4 +177,15 @@ class ThriftBinaryCLIService(override val cliService: LivyCLIService, val oomHoo
     server = null
     info("Thrift server has stopped")
   }
+
+   override def DownloadData(req: TDownloadDataReq): TDownloadDataResp = {
+   // Added just avoid failureImplementation logic for downloading data
+   new TDownloadDataResp()
+   }
+
+   override def UploadData(req: TUploadDataReq): TUploadDataResp = {
+   // Added just avoid failureImplementation logic for downloading data
+   new TUploadDataResp()
+   }
+
 }
