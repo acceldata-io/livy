@@ -100,7 +100,7 @@
     <spark.scala-2.12.version>3.5.1</spark.scala-2.12.version>
     <spark.version>${spark.scala-2.12.version}</spark.version>
     <hive.version>4.0.0.3.3.6.0-1</hive.version>
-    <commons-codec.version>1.9</commons-codec.version>
+    <commons-codec.version>1.14</commons-codec.version>
     <httpclient.version>4.5.13</httpclient.version>
     <httpcore.version>4.4.4</httpcore.version>
     <jackson.version>2.12.7</jackson.version>
@@ -112,7 +112,7 @@
     <kryo.version>4.0.2</kryo.version>
     <metrics.version>3.1.0</metrics.version>
     <mockito.version>1.10.19</mockito.version>
-    <netty.version>4.1.86.Final</netty.version>
+    <netty.version>4.1.94.Final</netty.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <scalatest.version>3.0.8</scalatest.version>
     <scalatra.version>2.6.5</scalatra.version>
