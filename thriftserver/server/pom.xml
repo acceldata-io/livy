@@ -151,11 +151,6 @@
         </exclusion>
       </exclusions>
     </dependency>
-    <dependency>
-      <groupId>commons-lang</groupId>
-      <artifactId>commons-lang</artifactId>
-      <version>2.6</version>
-    </dependency>
 
     <!-- needed for LDAP testing -->
     <dependency>
@@ -199,6 +194,11 @@
       <artifactId>apacheds-core-integ</artifactId>
       <version>${apacheds.version}</version>
       <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>3.14.0</version>
     </dependency>
   </dependencies>
   <build>
