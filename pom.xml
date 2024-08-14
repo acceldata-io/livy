@@ -1273,7 +1273,7 @@
     <profile>
       <id>hadoop3</id>
       <properties>
-        <hadoop.major-minor.version>3.3</hadoop.major-minor.version>
+        <hadoop.major-minor.version>3</hadoop.major-minor.version>
         <hadoop.version>3.3.6.3.3.6.0-1</hadoop.version>
       </properties>
     </profile>
