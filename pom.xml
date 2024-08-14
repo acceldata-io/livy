@@ -22,7 +22,7 @@
 
   <groupId>org.apache.livy</groupId>
   <artifactId>livy-main</artifactId>
-  <version>0.7.1.3.2.3.2-3</version>
+  <version>0.7.1.3.2.3.2-2</version>
   <packaging>pom</packaging>
   <name>Livy Project Parent POM</name>
   <description>Livy Project</description>
@@ -92,14 +92,14 @@
 
   <properties>
     <asynchttpclient.version>2.10.1</asynchttpclient.version>
-    <hadoop.version>3.2.3.3.2.3.2-3</hadoop.version>
+    <hadoop.version>3.2.3.3.2.3.2-2</hadoop.version>
     <hadoop.scope>compile</hadoop.scope>
     <slf4j.version>1.7.35</slf4j.version>
     <reload4j.version>1.2.25</reload4j.version>
-    <spark.scala-2.11.version>2.4.8.3.2.3.2-3</spark.scala-2.11.version>
-    <spark.scala-2.12.version>2.4.8.3.2.3.2-3</spark.scala-2.12.version>
+    <spark.scala-2.11.version>2.4.8.3.2.3.2-2</spark.scala-2.11.version>
+    <spark.scala-2.12.version>2.4.8.3.2.3.2-2</spark.scala-2.12.version>
     <spark.version>${spark.scala-2.11.version}</spark.version>
-    <hive.version>3.1.4.3.2.3.2-3</hive.version>
+    <hive.version>3.1.4.3.2.3.2-2</hive.version>
     <commons-codec.version>1.9</commons-codec.version>
     <httpclient.version>4.5.3</httpclient.version>
     <httpcore.version>4.4.4</httpcore.version>
@@ -148,7 +148,7 @@
     <ldap-api.version>1.0.0-M33</ldap-api.version>
 
     <curator.version>2.7.1</curator.version>
-    <zookeeper.version>3.5.10.3.2.3.2-3</zookeeper.version>
+    <zookeeper.version>3.5.10.3.2.3.2-2</zookeeper.version>
 
     <!--
       Properties for the copyright header style checks. Modules that use the ASF header
@@ -1209,7 +1209,7 @@
       </activation>
       <properties>
         <spark.scala-2.12.version>3.0.0</spark.scala-2.12.version>
-        <spark.scala-2.11.version>2.4.8.3.2.3.2-3</spark.scala-2.11.version>
+        <spark.scala-2.11.version>2.4.8.3.2.3.2-2</spark.scala-2.11.version>
         <spark.version>${spark.scala-2.11.version}</spark.version>
         <netty.spark-2.12.version>4.1.77.Final</netty.spark-2.12.version>
         <netty.spark-2.11.version>4.1.77.Final</netty.spark-2.11.version>
