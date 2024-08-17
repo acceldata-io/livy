@@ -26,6 +26,8 @@ import org.apache.hive.service.cli.HiveSQLException
 import org.apache.hive.service.cli.SessionHandle
 import org.apache.hive.service.rpc.thrift.TDownloadDataReq
 import org.apache.hive.service.rpc.thrift.TDownloadDataResp
+import org.apache.hive.service.rpc.thrift.TStatus
+import org.apache.hive.service.rpc.thrift.TStatusCode
 import org.apache.hive.service.rpc.thrift.TUploadDataReq
 import org.apache.hive.service.rpc.thrift.TUploadDataResp
 import org.apache.hive.service.server.ThreadFactoryWithGarbageCleanup
@@ -185,7 +187,8 @@ class ThriftBinaryCLIService(override val cliService: LivyCLIService, val oomHoo
     val resp = new TUploadDataResp
     try {
       val sessionHandle = new SessionHandle(req.getSessionHandle)
-      cliService.uploadData()
+      cliService.uploadData(sessionHandle)
+      resp.setStatus(ThriftBinaryCLIService.OK_STATUS)
     } catch {
       case e: Exception =>
         warn("Error UploadData: ", e)
@@ -199,12 +202,17 @@ class ThriftBinaryCLIService(override val cliService: LivyCLIService, val oomHoo
     val resp = new TDownloadDataResp
     try {
       val sessionHandle = new SessionHandle(req.getSessionHandle)
-      cliService.downloadData()
+      cliService.downloadData(sessionHandle)
+      resp.setStatus(ThriftBinaryCLIService.OK_STATUS)
     } catch {
       case e: Exception =>
-        warn("Error download data: ", e)
+        warn("Error DownloadData: ", e)
         resp.setStatus(HiveSQLException.toTStatus(e))
     }
     resp
   }
+}
+
+object ThriftBinaryCLIService {
+  private val OK_STATUS: TStatus = new TStatus(TStatusCode.SUCCESS_STATUS)
 }

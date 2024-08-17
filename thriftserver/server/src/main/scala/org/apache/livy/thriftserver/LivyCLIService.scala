@@ -387,12 +387,12 @@ class LivyCLIService(server: LivyThriftServer)
   }
 
   @throws[HiveSQLException]
-  def uploadData(): Nothing = {
+  def uploadData(sessionHandle: SessionHandle): Nothing = {
     throw new HiveSQLException("Operation not yet supported.")
   }
 
   @throws[HiveSQLException]
-  def downloadData(): Nothing = {
+  def downloadData(sessionHandle: SessionHandle): Nothing = {
     throw new HiveSQLException("Operation not yet supported.")
   }
 }
