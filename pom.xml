@@ -208,7 +208,6 @@
 
   <modules>
     <module>api</module>
-    <module>assembly</module>
     <module>client-common</module>
     <module>client-http</module>
     <module>core</module>
@@ -226,6 +225,7 @@
     <module>test-lib</module>
     <module>integration-test</module>
     <module>thriftserver/server</module>
+    <module>assembly</module>
   </modules>
 
   <dependencies>
@@ -1315,7 +1315,7 @@
         <java.version>11</java.version>
         <py4j.version>0.10.9.7</py4j.version>
         <json4s.version>3.7.0-M11</json4s.version>
-        <netty.version>4.1.92.Final</netty.version>
+        <netty.version>4.1.94.Final</netty.version>
         <spark.bin.name>spark-${spark.version}-bin-hadoop${hadoop.major-minor.version}</spark.bin.name>
         <spark.bin.download.url>
           https://archive.apache.org/dist/spark/spark-${spark.version}/${spark.bin.name}.tgz
