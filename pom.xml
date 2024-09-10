@@ -614,6 +614,10 @@
             <groupId>org.javassist</groupId>
             <artifactId>javassist</artifactId>
           </exclusion>
+          <exclusion>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-mapper-asl</artifactId>
+          </exclusion>
         </exclusions>
       </dependency>
 
@@ -625,6 +629,10 @@
           <exclusion>
             <groupId>log4j</groupId>
             <artifactId>apache-log4j-extras</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-mapper-asl</artifactId>
           </exclusion>
         </exclusions>
       </dependency>
