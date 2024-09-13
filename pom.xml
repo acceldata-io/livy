@@ -99,7 +99,7 @@
     <spark.scala-2.11.version>2.4.8.3.2.3.3-2</spark.scala-2.11.version>
     <spark.scala-2.12.version>2.4.8.3.2.3.3-2</spark.scala-2.12.version>
     <spark.version>${spark.scala-2.11.version}</spark.version>
-    <hive.version>3.1.4.3.2.3.3-2</hive.version>
+    <hive.version>3.1.4.3.2.3.2-201</hive.version>
     <commons-codec.version>1.9</commons-codec.version>
     <httpclient.version>4.5.3</httpclient.version>
     <httpcore.version>4.4.4</httpcore.version>
