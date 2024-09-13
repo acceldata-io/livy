@@ -96,8 +96,8 @@
     <hadoop.scope>compile</hadoop.scope>
     <slf4j.version>1.7.35</slf4j.version>
     <reload4j.version>1.2.25</reload4j.version>
-    <spark.scala-2.11.version>3.3.3.3.2.3.2-201</spark.scala-2.11.version>
-    <spark.scala-2.12.version>3.3.3.3.2.3.2-201</spark.scala-2.12.version>
+    <spark.scala-2.11.version>2.4.8.3.2.3.2-201</spark.scala-2.11.version>
+    <spark.scala-2.12.version>2.4.8.3.2.3.2-201</spark.scala-2.12.version>
     <spark.version>${spark.scala-2.11.version}</spark.version>
     <hive.version>3.1.4.3.2.3.2-201</hive.version>
     <commons-codec.version>1.9</commons-codec.version>
@@ -123,8 +123,8 @@
     <py4j.version>0.10.7</py4j.version>
     <scala-2.11.version>2.11.12</scala-2.11.version>
     <scala-2.12.version>2.12.15</scala-2.12.version>
-    <scala.binary.version>2.12</scala.binary.version>
-    <scala.version>${scala-2.12.version}</scala.version>
+    <scala.binary.version>2.11</scala.binary.version>
+    <scala.version>${scala-2.11.version}</scala.version>
     <scalatest.version>3.0.8</scalatest.version>
     <scalatra.version>2.6.5</scalatra.version>
     <java.version>1.8</java.version>
@@ -1195,8 +1195,8 @@
         </property>
       </activation>
       <properties>
-        <spark.scala-2.12.version>3.3.3.3.2.3.2-201</spark.scala-2.12.version>
-        <spark.scala-2.11.version>3.3.3.3.2.3.2-201</spark.scala-2.11.version>
+        <spark.scala-2.12.version>2.4.8.3.2.3.2-201</spark.scala-2.12.version>
+        <spark.scala-2.11.version>2.4.8.3.2.3.2-201</spark.scala-2.11.version>
         <spark.version>${spark.scala-2.11.version}</spark.version>
         <netty.spark-2.12.version>4.1.86.Final</netty.spark-2.12.version>
         <netty.spark-2.11.version>4.1.86.Final</netty.spark-2.11.version>
