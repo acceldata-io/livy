@@ -108,6 +108,14 @@
       <scope>provided</scope>
       <exclusions>
         <exclusion>
+          <groupId>org.apache.avro</groupId>
+          <artifactId>avro</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.apache.avro</groupId>
+          <artifactId>avro-mapred</artifactId>
+        </exclusion>
+        <exclusion>
           <groupId>log4j</groupId>
           <artifactId>log4j</artifactId>
         </exclusion>
@@ -122,6 +130,16 @@
       <groupId>org.apache.spark</groupId>
       <artifactId>spark-hive_${scala.binary.version}</artifactId>
       <scope>provided</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>org.apache.avro</groupId>
+          <artifactId>avro</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.apache.avro</groupId>
+          <artifactId>avro-mapred</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
 
     <dependency>
