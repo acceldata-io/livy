@@ -97,7 +97,7 @@
     <slf4j.version>1.7.35</slf4j.version>
     <reload4j.version>1.2.25</reload4j.version>
     <spark.scala-2.11.version>2.4.8.3.2.3.2-201</spark.scala-2.11.version>
-    <spark.scala-2.12.version>2.4.8.3.2.3.2-201</spark.scala-2.12.version>
+    <spark.scala-2.12.version>3.3.3.3.2.3.2-201</spark.scala-2.12.version>
     <spark.version>${spark.scala-2.11.version}</spark.version>
     <hive.version>3.1.4.3.2.3.2-201</hive.version>
     <commons-codec.version>1.9</commons-codec.version>
@@ -132,9 +132,9 @@
     <execution.root>${user.dir}</execution.root>
     <spark.home>${execution.root}/dev/spark</spark.home>
     <spark.bin.download.url>
-      https://archive.apache.org/dist/spark/spark-2.4.8/spark-2.4.8-bin-hadoop2.7.tgz
+      https://mirror.odp.acceldata.dev/ODP/standalone/3.2.3.2-201/spark-2.4.8.3.2.2.0-201-bin-3.2.3.3.2.2.0-201.tgz
     </spark.bin.download.url>
-    <spark.bin.name>spark-2.4.8-bin-hadoop2.7</spark.bin.name>
+    <spark.bin.name>spark-2.4.8.3.2.2.0-201-bin-3.2.3.3.2.2.0-201</spark.bin.name>
     <!--  used for testing, NCSARequestLog use it for access log  -->
     <livy.log.dir>${basedir}/target</livy.log.dir>
 
@@ -521,6 +521,14 @@
         <version>${spark.version}</version>
         <exclusions>
           <exclusion>
+            <groupId>org.apache.avro</groupId>
+            <artifactId>avro</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>org.apache.avro</groupId>
+            <artifactId>avro-mapred</artifactId>
+          </exclusion>
+          <exclusion>
             <groupId>org.eclipse.jetty.orbit</groupId>
             <artifactId>javax.servlet</artifactId>
           </exclusion>
@@ -548,6 +556,14 @@
         <artifactId>spark-hive_${scala.binary.version}</artifactId>
         <version>${spark.version}</version>
         <exclusions>
+          <exclusion>
+            <groupId>org.apache.avro</groupId>
+            <artifactId>avro</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>org.apache.avro</groupId>
+            <artifactId>avro-mapred</artifactId>
+          </exclusion>
           <exclusion>
             <groupId>log4j</groupId>
             <artifactId>apache-log4j-extras</artifactId>
@@ -1211,7 +1227,7 @@
         </property>
       </activation>
       <properties>
-        <spark.scala-2.12.version>2.4.8.3.2.3.2-201</spark.scala-2.12.version>
+        <spark.scala-2.12.version>3.3.3.3.2.3.2-201</spark.scala-2.12.version>
         <spark.scala-2.11.version>2.4.8.3.2.3.2-201</spark.scala-2.11.version>
         <spark.version>${spark.scala-2.11.version}</spark.version>
         <netty.spark-2.12.version>4.1.86.Final</netty.spark-2.12.version>
@@ -1223,9 +1239,9 @@
         <json4s.spark-2.12.version>3.6.6</json4s.spark-2.12.version>
         <json4s.version>${json4s.spark-2.11.version}</json4s.version>
         <spark.bin.download.url>
-          https://archive.apache.org/dist/spark/spark-3.2.2/spark-3.2.2-bin-hadoop3.2.tgz
+          https://mirror.odp.acceldata.dev/ODP/standalone/3.2.3.2-201/spark-3.3.3.3.2.3.2-201-bin-3.2.3.3.2.3.2-201.tgz
         </spark.bin.download.url>
-        <spark.bin.name>spark-3.2.2-bin-hadoop3.2</spark.bin.name>
+        <spark.bin.name>spark-3.3.3.3.2.3.2-201-bin-3.2.3.3.2.3.2-201</spark.bin.name>
       </properties>
     </profile>
 
