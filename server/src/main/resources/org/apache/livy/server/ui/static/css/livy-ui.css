@@ -26,6 +26,12 @@ pre {
   margin: 0;
   word-break: break-word;
   white-space: pre-wrap;
+  display:block;
+  color:#333;
+  word-wrap:break-word;
+  background-color:#f5f5f5;
+  border:1px solid #ccc;
+  border-radius:4px
 }
 
 #session-log pre {
