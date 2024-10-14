@@ -162,6 +162,10 @@
       <scope>provided</scope>
       <exclusions>
         <exclusion>
+          <groupId>dnsjava</groupId>
+          <artifactId>dnsjava</artifactId>
+        </exclusion>
+        <exclusion>
           <groupId>javax.servlet.jsp</groupId>
           <artifactId>jsp-api</artifactId>
         </exclusion>

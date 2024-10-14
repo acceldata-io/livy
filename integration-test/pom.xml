@@ -102,6 +102,10 @@
       <classifier>tests</classifier>
       <exclusions>
         <exclusion>
+          <groupId>dnsjava</groupId>
+          <artifactId>dnsjava</artifactId>
+        </exclusion>
+        <exclusion>
           <groupId>org.apache.curator</groupId>
           <artifactId>curator-client</artifactId>
         </exclusion>
@@ -147,6 +151,10 @@
       <artifactId>hadoop-yarn-server-tests</artifactId>
       <classifier>tests</classifier>
       <exclusions>
+        <exclusion>
+          <groupId>dnsjava</groupId>
+          <artifactId>dnsjava</artifactId>
+        </exclusion>
         <exclusion>
           <groupId>org.apache.zookeeper</groupId>
           <artifactId>zookeeper</artifactId>
@@ -398,6 +406,10 @@
           <version>${hive.version}</version>
           <scope>test</scope>
           <exclusions>
+            <exclusion>
+              <groupId>dnsjava</groupId>
+              <artifactId>dnsjava</artifactId>
+            </exclusion>
             <exclusion>
               <groupId>org.apache.avro</groupId>
               <artifactId>avro</artifactId>
