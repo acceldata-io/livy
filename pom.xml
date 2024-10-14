@@ -356,6 +356,14 @@
         <version>${hadoop.version}</version>
         <exclusions>
           <exclusion>
+            <groupId>dnsjava</groupId>
+            <artifactId>dnsjava</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>jsp-api</artifactId>
+          </exclusion>
+          <exclusion>
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
           </exclusion>
@@ -392,6 +400,10 @@
         <classifier>tests</classifier>
         <version>${hadoop.version}</version>
         <exclusions>
+          <exclusion>
+            <groupId>dnsjava</groupId>
+            <artifactId>dnsjava</artifactId>
+          </exclusion>
           <exclusion>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
@@ -538,6 +550,10 @@
         <classifier>tests</classifier>
         <version>${hadoop.version}</version>
         <exclusions>
+          <exclusion>
+            <groupId>dnsjava</groupId>
+            <artifactId>dnsjava</artifactId>
+          </exclusion>
           <exclusion>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
