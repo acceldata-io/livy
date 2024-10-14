@@ -36,6 +36,10 @@
       <version>${hive.version}</version>
       <exclusions>
         <exclusion>
+          <groupId>commons-io</groupId>
+          <artifactId>commons-io</artifactId>
+        </exclusion>
+        <exclusion>
           <groupId>dnsjava</groupId>
           <artifactId>dnsjava</artifactId>
         </exclusion>
@@ -58,6 +62,10 @@
       <artifactId>hive-beeline</artifactId>
       <version>${hive.version}</version>
       <exclusions>
+        <exclusion>
+          <groupId>commons-io</groupId>
+          <artifactId>commons-io</artifactId>
+        </exclusion>
         <exclusion>
           <groupId>org.apache.hbase</groupId>
           <artifactId>*</artifactId>
