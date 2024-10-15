@@ -188,6 +188,12 @@
       <artifactId>slf4j-reload4j</artifactId>
       <scope>provided</scope>
     </dependency>
+
+    <dependency>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+      <version>${commons.io.version}</version>
+    </dependency>
   </dependencies>
 
   <build>
