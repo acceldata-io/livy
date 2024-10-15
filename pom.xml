@@ -102,6 +102,7 @@
     <spark.version>${spark.scala-2.11.version}</spark.version>
     <hive.version>3.1.4.3.2.3.2-201</hive.version>
     <commons-codec.version>1.9</commons-codec.version>
+    <protobuf.java.version>3.23.4</protobuf.java.version>
     <httpclient.version>4.5.3</httpclient.version>
     <httpcore.version>4.4.4</httpcore.version>
     <jackson.version>2.10.1</jackson.version>
@@ -373,6 +374,10 @@
         <version>${hadoop.version}</version>
         <exclusions>
           <exclusion>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java</artifactId>
+          </exclusion>
+          <exclusion>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
           </exclusion>
@@ -406,6 +411,10 @@
         <version>${hadoop.version}</version>
         <exclusions>
           <exclusion>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java</artifactId>
+          </exclusion>
+          <exclusion>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
           </exclusion>
@@ -429,6 +438,10 @@
         <artifactId>hadoop-client</artifactId>
         <version>${hadoop.version}</version>
         <exclusions>
+          <exclusion>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java</artifactId>
+          </exclusion>
           <exclusion>
             <groupId>com.squareup.okhttp</groupId>
             <artifactId>okhttp</artifactId>
@@ -454,6 +467,10 @@
         <classifier>tests</classifier>
         <version>${hadoop.version}</version>
         <exclusions>
+          <exclusion>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java</artifactId>
+          </exclusion>
           <exclusion>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
@@ -487,6 +504,10 @@
         <version>${hadoop.version}</version>
         <exclusions>
           <exclusion>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java</artifactId>
+          </exclusion>
+          <exclusion>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
           </exclusion>
@@ -519,6 +540,10 @@
         <classifier>tests</classifier>
         <version>${hadoop.version}</version>
         <exclusions>
+          <exclusion>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java</artifactId>
+          </exclusion>
           <exclusion>
             <groupId>org.bouncycastle</groupId>
             <artifactId>bcprov-jdk15on</artifactId>
@@ -555,6 +580,10 @@
         <artifactId>spark-core_${scala.binary.version}</artifactId>
         <version>${spark.version}</version>
         <exclusions>
+          <exclusion>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java</artifactId>
+          </exclusion>
           <exclusion>
             <groupId>com.squareup.okhttp</groupId>
             <artifactId>okhttp</artifactId>
@@ -658,6 +687,12 @@
         <groupId>org.apache.spark</groupId>
         <artifactId>spark-sql_${scala.binary.version}</artifactId>
         <version>${spark.version}</version>
+        <exclusions>
+          <exclusion>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java</artifactId>
+          </exclusion>
+        </exclusions>
       </dependency>
 
       <dependency>
