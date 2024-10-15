@@ -108,6 +108,10 @@
       <scope>provided</scope>
       <exclusions>
         <exclusion>
+          <groupId>com.google.protobuf</groupId>
+          <artifactId>protobuf-java</artifactId>
+        </exclusion>
+        <exclusion>
           <groupId>com.squareup.okhttp</groupId>
           <artifactId>okhttp</artifactId>
         </exclusion>

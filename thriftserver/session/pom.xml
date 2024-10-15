@@ -47,6 +47,10 @@
       <scope>provided</scope>
       <exclusions>
         <exclusion>
+          <groupId>com.google.protobuf</groupId>
+          <artifactId>protobuf-java</artifactId>
+        </exclusion>
+        <exclusion>
           <groupId>com.squareup.okhttp</groupId>
           <artifactId>okhttp</artifactId>
         </exclusion>
@@ -73,6 +77,10 @@
       <artifactId>spark-sql_${scala.binary.version}</artifactId>
       <scope>provided</scope>
       <exclusions>
+        <exclusion>
+          <groupId>com.google.protobuf</groupId>
+          <artifactId>protobuf-java</artifactId>
+        </exclusion>
         <exclusion>
           <groupId>org.codehaus.jackson</groupId>
           <artifactId>jackson-mapper-asl</artifactId>
