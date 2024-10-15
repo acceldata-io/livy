@@ -117,8 +117,9 @@
     <kryo.version>4.0.2</kryo.version>
     <metrics.version>3.1.0</metrics.version>
     <mockito.version>1.10.19</mockito.version>
-    <netty.spark-2.11.version>4.1.86.Final</netty.spark-2.11.version>
-    <netty.spark-2.12.version>4.1.86.Final</netty.spark-2.12.version>
+    <netty.base.version>4.1.86.Final</netty.base.version>
+    <netty.spark-2.11.version>${netty.base.version}</netty.spark-2.11.version>
+    <netty.spark-2.12.version>${netty.spark-2.11.version}</netty.spark-2.12.version>
     <netty.version>${netty.spark-2.11.version}</netty.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <py4j.version>0.10.7</py4j.version>
@@ -242,6 +243,12 @@
   </modules>
 
   <dependencies>
+
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-configuration2</artifactId>
+      <version>2.11.0</version>
+    </dependency>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -382,6 +389,10 @@
         <version>${hadoop.version}</version>
         <exclusions>
           <exclusion>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-configuration2</artifactId>
+          </exclusion>
+          <exclusion>
             <groupId>com.nimbusds</groupId>
             <artifactId>nimbus-jose-jwt</artifactId>
           </exclusion>
@@ -430,6 +441,10 @@
         <classifier>tests</classifier>
         <version>${hadoop.version}</version>
         <exclusions>
+          <exclusion>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-configuration2</artifactId>
+          </exclusion>
           <exclusion>
             <groupId>com.nimbusds</groupId>
             <artifactId>nimbus-jose-jwt</artifactId>
@@ -612,6 +627,10 @@
         <artifactId>spark-core_${scala.binary.version}</artifactId>
         <version>${spark.version}</version>
         <exclusions>
+          <exclusion>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-configuration2</artifactId>
+          </exclusion>
           <exclusion>
             <groupId>com.nimbusds</groupId>
             <artifactId>nimbus-jose-jwt</artifactId>
@@ -1362,8 +1381,8 @@
         <spark.scala-2.12.version>3.0.0</spark.scala-2.12.version>
         <spark.scala-2.11.version>2.4.8.3.2.3.3-3</spark.scala-2.11.version>
         <spark.version>${spark.scala-2.11.version}</spark.version>
-        <netty.spark-2.12.version>4.1.86.Final</netty.spark-2.12.version>
-        <netty.spark-2.11.version>4.1.86.Final</netty.spark-2.11.version>
+        <netty.spark-2.11.version>${netty.base.version}</netty.spark-2.11.version>
+        <netty.spark-2.12.version>${netty.spark-2.11.version}</netty.spark-2.12.version>
         <netty.version>${netty.spark-2.11.version}</netty.version>
         <java.version>1.8</java.version>
         <py4j.version>0.10.9</py4j.version>
