@@ -74,6 +74,10 @@
       <scope>provided</scope>
       <exclusions>
         <exclusion>
+          <groupId>com.squareup.okhttp</groupId>
+          <artifactId>okhttp</artifactId>
+        </exclusion>
+        <exclusion>
           <groupId>commons-io</groupId>
           <artifactId>commons-io</artifactId>
         </exclusion>

@@ -142,6 +142,10 @@
       <scope>test</scope>
       <exclusions>
         <exclusion>
+          <groupId>com.squareup.okhttp</groupId>
+          <artifactId>okhttp</artifactId>
+        </exclusion>
+        <exclusion>
           <groupId>org.bouncycastle</groupId>
           <artifactId>bcprov-jdk15on</artifactId>
         </exclusion>

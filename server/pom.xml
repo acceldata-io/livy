@@ -118,6 +118,10 @@
       <artifactId>hadoop-client</artifactId>
       <exclusions>
         <exclusion>
+          <groupId>com.squareup.okhttp</groupId>
+          <artifactId>okhttp</artifactId>
+        </exclusion>
+        <exclusion>
           <groupId>commons-io</groupId>
           <artifactId>commons-io</artifactId>
         </exclusion>
@@ -244,6 +248,10 @@
       <artifactId>spark-core_${scala.binary.version}</artifactId>
       <scope>test</scope>
       <exclusions>
+        <exclusion>
+          <groupId>com.squareup.okhttp</groupId>
+          <artifactId>okhttp</artifactId>
+        </exclusion>
         <exclusion>
           <groupId>commons-io</groupId>
           <artifactId>commons-io</artifactId>
