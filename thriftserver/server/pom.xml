@@ -82,6 +82,12 @@
     </dependency>
 
     <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>${guava.version}</version>
+    </dependency>
+
+    <dependency>
       <groupId>org.apache.livy</groupId>
       <artifactId>livy-thriftserver-session</artifactId>
       <version>${project.version}</version>
