@@ -151,6 +151,10 @@
       <classifier>tests</classifier>
       <exclusions>
         <exclusion>
+          <groupId>org.bouncycastle</groupId>
+          <artifactId>bcprov-jdk15on</artifactId>
+        </exclusion>
+        <exclusion>
           <groupId>dnsjava</groupId>
           <artifactId>dnsjava</artifactId>
         </exclusion>
@@ -413,6 +417,10 @@
           <version>${hive.version}</version>
           <scope>test</scope>
           <exclusions>
+            <exclusion>
+              <groupId>org.bouncycastle</groupId>
+              <artifactId>bcprov-jdk15on</artifactId>
+            </exclusion>
             <exclusion>
               <groupId>commons-io</groupId>
               <artifactId>commons-io</artifactId>
