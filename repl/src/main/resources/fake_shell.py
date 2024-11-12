@@ -592,7 +592,6 @@ def main():
             java_import(gateway.jvm, "org.apache.spark.ml.python.*")
             java_import(gateway.jvm, "org.apache.spark.mllib.api.python.*")
             java_import(gateway.jvm, "org.apache.spark.resource.*")
-
             java_import(gateway.jvm, "org.apache.spark.sql.*")
             java_import(gateway.jvm, "org.apache.spark.sql.api.python.*")
             java_import(gateway.jvm, "org.apache.spark.sql.hive.*")
