@@ -146,7 +146,7 @@
     <!-- Required for testing LDAP integration -->
     <apacheds.version>2.0.0-M21</apacheds.version>
     <ldap-api.version>1.0.0-M33</ldap-api.version>
-    
+
     <curator.version>5.2.0</curator.version>
     <zookeeper.version>3.5.10.3.2.3.2-203</zookeeper.version>
 
