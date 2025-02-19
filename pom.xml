@@ -100,7 +100,7 @@
     <spark.scala-2.11.version>2.4.8.3.2.3.3-3</spark.scala-2.11.version>
     <spark.scala-2.12.version>2.4.8.3.2.3.3-3</spark.scala-2.12.version>
     <spark.version>${spark.scala-2.11.version}</spark.version>
-    <hive.version>3.1.4.3.2.3.2-201</hive.version>
+    <hive.version>3.1.4.3.2.3.3-3</hive.version>
     <guava.version>32.1.3-jre</guava.version>
     <commons-codec.version>1.9</commons-codec.version>
     <protobuf.java.version>3.23.4</protobuf.java.version>
