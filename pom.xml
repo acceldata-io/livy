@@ -109,7 +109,7 @@
     <jackson.version>2.12.7</jackson.version>
     <jackson-databind.version>2.12.7.1</jackson-databind.version>
     <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
-    <jetty.version>9.4.50.v20221201</jetty.version>
+    <jetty.version>9.4.57.v20241219</jetty.version>
     <junit.version>4.13.1</junit.version>
     <libthrift.version>0.16.0</libthrift.version>
     <kryo.version>4.0.2</kryo.version>
@@ -118,7 +118,7 @@
     <netty.version>4.1.94.Final</netty.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <scalatest.version>3.0.8</scalatest.version>
-    <scalatra.version>2.6.5</scalatra.version>
+    <scalatra.version>2.8.4</scalatra.version>
     <java.version>11</java.version>
     <test.redirectToFile>true</test.redirectToFile>
     <execution.root>${user.dir}</execution.root>
@@ -151,7 +151,7 @@
     <skipPySpark3Tests>false</skipPySpark3Tests>
 
     <!-- Required for testing LDAP integration -->
-    <apacheds.version>2.0.0.AM26</apacheds.version>
+    <apacheds.version>2.0.0.AM27</apacheds.version>
     <ldap-api.version>2.1.2</ldap-api.version>
 
     <curator.version>2.7.1</curator.version>
