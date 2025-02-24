@@ -22,7 +22,7 @@
   <parent>
     <artifactId>livy-main</artifactId>
     <groupId>org.apache.livy</groupId>
-    <version>0.8.0.3.3.6.2-1</version>
+    <version>0.8.0.3.3.6.0-1</version>
     <relativePath>../../pom.xml</relativePath>
   </parent>
 
@@ -50,6 +50,10 @@
       <artifactId>hive-service</artifactId>
       <version>${hive.version}</version>
       <exclusions>
+        <exclusion>
+          <groupId>dom4j</groupId>
+          <artifactId>dom4j</artifactId>
+        </exclusion>
         <exclusion>
           <groupId>com.fasterxml.woodstox</groupId>
           <artifactId>woodstox-core</artifactId>
