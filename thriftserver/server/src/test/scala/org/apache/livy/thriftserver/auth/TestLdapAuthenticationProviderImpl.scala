@@ -26,7 +26,6 @@ import org.apache.directory.server.core.annotations.ContextEntry
 import org.apache.directory.server.core.annotations.CreateDS
 import org.apache.directory.server.core.annotations.CreatePartition
 import org.apache.directory.server.core.integ.AbstractLdapTestUnit
-import org.apache.directory.server.core.integ.FrameworkRunner
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
@@ -37,7 +36,6 @@ import org.apache.livy.LivyConf
 /**
  * This unit test verifies the functionality of LdapAuthenticationProviderImpl.
  */
-@RunWith(classOf[FrameworkRunner])
 @CreateLdapServer(transports = Array(
   new CreateTransport(
     protocol = "LDAP",
@@ -68,7 +66,7 @@ class TestLdapAuthenticationProviderImpl extends AbstractLdapTestUnit {
   def setup(): Unit = {
     livyConf.set(LivyConf.AUTH_LDAP_BASE_DN, "dc=example,dc=com")
     livyConf.set(LivyConf.AUTH_LDAP_URL, String.format("ldap://%s:%s", "localhost",
-      AbstractLdapTestUnit.getLdapServer.getPort.toString))
+      AbstractLdapTestUnit.ldapServer.getPort.toString))
   }
 
   @Test
