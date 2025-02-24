@@ -29,7 +29,6 @@ import org.apache.directory.server.core.annotations.ContextEntry
 import org.apache.directory.server.core.annotations.CreateDS
 import org.apache.directory.server.core.annotations.CreatePartition
 import org.apache.directory.server.core.integ.AbstractLdapTestUnit
-import org.apache.directory.server.core.integ.FrameworkRunner
 import org.apache.hadoop.security.authentication.client.AuthenticationException
 import org.junit.Assert
 import org.junit.Before
@@ -40,7 +39,6 @@ import org.mockito.Mockito
 /**
  * This unit test verifies the functionality of LdapAuthenticationHandlerImpl.
  */
-@RunWith(classOf[FrameworkRunner])
 @CreateLdapServer(transports = Array(
   new CreateTransport(
     protocol = "LDAP",
@@ -81,7 +79,7 @@ class TestLdapAuthenticationHandlerImpl extends AbstractLdapTestUnit {
     val p = new Properties
     p.setProperty("ldap.basedn", "dc=example,dc=com")
     p.setProperty("ldap.providerurl", String.format("ldap://%s:%s", "localhost",
-      AbstractLdapTestUnit.getLdapServer.getPort.toString))
+      AbstractLdapTestUnit.ldapServer.getPort.toString))
     p
   }
 

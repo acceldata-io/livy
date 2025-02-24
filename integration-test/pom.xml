@@ -325,6 +325,12 @@
     <dependency>
       <groupId>org.scalatra</groupId>
       <artifactId>scalatra-test_${scala.binary.version}</artifactId>
+      <exclusions>
+        <exclusion>
+          <groupId>org.eclipse.jetty</groupId>
+          <artifactId>jetty-webapp</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
 
     <!-- hadoop-common in test scope needs curator-client, but we want to use the proper version -->
