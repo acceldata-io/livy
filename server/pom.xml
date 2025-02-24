@@ -230,11 +230,23 @@
     <dependency>
       <groupId>org.scalatra</groupId>
       <artifactId>scalatra_${scala.binary.version}</artifactId>
+      <exclusions>
+        <exclusion>
+          <groupId>org.eclipse.jetty</groupId>
+          <artifactId>jetty-webapp</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
 
     <dependency>
       <groupId>org.scalatra</groupId>
       <artifactId>scalatra-json_${scala.binary.version}</artifactId>
+      <exclusions>
+        <exclusion>
+          <groupId>org.eclipse.jetty</groupId>
+          <artifactId>jetty-webapp</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
 
     <dependency>
@@ -242,6 +254,10 @@
       <artifactId>scalatra-metrics_${scala.binary.version}</artifactId>
       <version>${scalatra.version}</version>
       <exclusions>
+        <exclusion>
+          <groupId>org.eclipse.jetty</groupId>
+          <artifactId>jetty-webapp</artifactId>
+        </exclusion>
         <exclusion>
           <groupId>com.typesafe.akka</groupId>
           <artifactId>akka-actor_${scala.binary.version}</artifactId>
@@ -402,6 +418,10 @@
       <artifactId>scalatra-test_${scala.binary.version}</artifactId>
       <scope>test</scope>
       <exclusions>
+        <exclusion>
+          <groupId>org.eclipse.jetty</groupId>
+          <artifactId>jetty-webapp</artifactId>
+        </exclusion>
         <exclusion>
           <groupId>org.mockito</groupId>
           <artifactId>*</artifactId>
