@@ -136,6 +136,10 @@
       <scope>provided</scope>
       <exclusions>
         <exclusion>
+          <groupId>com.google.protobuf</groupId>
+          <artifactId>protobuf-java</artifactId>
+        </exclusion>
+        <exclusion>
           <groupId>commons-io</groupId>
           <artifactId>commons-io</artifactId>
         </exclusion>

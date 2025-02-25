@@ -292,6 +292,10 @@
       <scope>test</scope>
       <exclusions>
         <exclusion>
+          <groupId>com.google.protobuf</groupId>
+          <artifactId>protobuf-java</artifactId>
+        </exclusion>
+        <exclusion>
           <groupId>org.apache.thrift</groupId>
           <artifactId>libfb303</artifactId>
         </exclusion>
