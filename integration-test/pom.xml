@@ -496,6 +496,10 @@
           <scope>test</scope>
           <exclusions>
             <exclusion>
+              <groupId>org.apache.thrift</groupId>
+              <artifactId>libfb303</artifactId>
+            </exclusion>
+            <exclusion>
               <groupId>net.minidev</groupId>
               <artifactId>json-smart</artifactId>
             </exclusion>

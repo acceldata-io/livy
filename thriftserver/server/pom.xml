@@ -22,7 +22,7 @@
   <parent>
     <artifactId>livy-main</artifactId>
     <groupId>org.apache.livy</groupId>
-    <version>0.8.0.3.3.6.0-1</version>
+    <version>0.8.0.3.3.6.2-1</version>
     <relativePath>../../pom.xml</relativePath>
   </parent>
 
@@ -35,6 +35,10 @@
       <artifactId>hive-service-rpc</artifactId>
       <version>${hive.version}</version>
       <exclusions>
+        <exclusion>
+          <groupId>org.apache.thrift</groupId>
+          <artifactId>libfb303</artifactId>
+        </exclusion>
         <exclusion>
           <groupId>tomcat</groupId>
           <artifactId>*</artifactId>
@@ -50,6 +54,10 @@
       <artifactId>hive-service</artifactId>
       <version>${hive.version}</version>
       <exclusions>
+        <exclusion>
+          <groupId>org.apache.thrift</groupId>
+          <artifactId>libfb303</artifactId>
+        </exclusion>
         <exclusion>
           <groupId>org.bouncycastle</groupId>
           <artifactId>bcprov-jdk18on</artifactId>
@@ -77,6 +85,10 @@
         <exclusion>
           <groupId>commons-io</groupId>
           <artifactId>commons-io</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.apache.thrift</groupId>
+          <artifactId>libfb303</artifactId>
         </exclusion>
         <exclusion>
           <groupId>org.apache.hive</groupId>
@@ -163,6 +175,10 @@
       <version>${hive.version}</version>
       <scope>test</scope>
       <exclusions>
+        <exclusion>
+          <groupId>org.apache.thrift</groupId>
+          <artifactId>libfb303</artifactId>
+        </exclusion>
         <exclusion>
           <groupId>net.minidev</groupId>
           <artifactId>json-smart</artifactId>
