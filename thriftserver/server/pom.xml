@@ -51,6 +51,10 @@
       <version>${hive.version}</version>
       <exclusions>
         <exclusion>
+          <groupId>org.bouncycastle</groupId>
+          <artifactId>bcprov-jdk18on</artifactId>
+        </exclusion>
+        <exclusion>
           <groupId>org.springframework</groupId>
           <artifactId>*</artifactId>
         </exclusion>
