@@ -106,8 +106,8 @@
     <protobuf.java.version>3.23.4</protobuf.java.version>
     <httpclient.version>4.5.13</httpclient.version>
     <httpcore.version>4.4.4</httpcore.version>
-    <jackson.version>2.12.7</jackson.version>
-    <jackson-databind.version>2.12.7.1</jackson-databind.version>
+    <jackson.version>2.15.4</jackson.version>
+    <jackson-databind.version>${jackson.version}</jackson-databind.version>
     <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
     <jetty.version>9.4.57.v20241219</jetty.version>
     <junit.version>4.13.1</junit.version>
