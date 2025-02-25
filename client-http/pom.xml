@@ -220,6 +220,8 @@
                   <excludes>
                     <exclude>*.jar</exclude>
                     <exclude>META-INF/maven/**</exclude>
+                    <exclude>META-INF/versions/17/**</exclude>
+                    <exclude>META-INF/versions/21/**</exclude>
                   </excludes>
                 </filter>
               </filters>
