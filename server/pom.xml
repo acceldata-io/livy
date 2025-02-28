@@ -132,6 +132,10 @@
       <artifactId>hadoop-client</artifactId>
       <exclusions>
         <exclusion>
+          <groupId>org.apache.hadoop.thirdparty</groupId>
+          <artifactId>hadoop-shaded-avro_1_11</artifactId>
+        </exclusion>
+        <exclusion>
           <groupId>com.google.protobuf</groupId>
           <artifactId>protobuf-java</artifactId>
         </exclusion>
