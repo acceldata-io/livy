@@ -382,6 +382,10 @@
         <exclusions>
           <exclusion>
             <groupId>org.apache.hadoop.thirdparty</groupId>
+            <artifactId>hadoop-shaded-protobuf_3_25</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>org.apache.hadoop.thirdparty</groupId>
             <artifactId>hadoop-shaded-avro_1_11</artifactId>
           </exclusion>
           <exclusion>
@@ -455,6 +459,10 @@
         <exclusions>
           <exclusion>
             <groupId>org.apache.hadoop.thirdparty</groupId>
+            <artifactId>hadoop-shaded-protobuf_3_25</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>org.apache.hadoop.thirdparty</groupId>
             <artifactId>hadoop-shaded-avro_1_11</artifactId>
           </exclusion>
           <exclusion>
@@ -513,6 +521,10 @@
         <artifactId>hadoop-client</artifactId>
         <version>${hadoop.version}</version>
         <exclusions>
+          <exclusion>
+            <groupId>org.apache.hadoop.thirdparty</groupId>
+            <artifactId>hadoop-shaded-protobuf_3_25</artifactId>
+          </exclusion>
           <exclusion>
             <groupId>org.apache.hadoop.thirdparty</groupId>
             <artifactId>hadoop-shaded-avro_1_11</artifactId>
