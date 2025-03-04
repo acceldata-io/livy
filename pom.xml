@@ -103,7 +103,7 @@
     <hive.version>4.0.0.3.3.6.2-1</hive.version>
     <guava.version>32.1.3-jre</guava.version>
     <commons-codec.version>1.14</commons-codec.version>
-    <protobuf.java.version>3.23.4</protobuf.java.version>
+    <protobuf.java.version>3.25.5</protobuf.java.version>
     <httpclient.version>4.5.13</httpclient.version>
     <httpcore.version>4.4.4</httpcore.version>
     <jackson.version>2.15.4</jackson.version>
