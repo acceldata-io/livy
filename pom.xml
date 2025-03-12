@@ -22,7 +22,7 @@
 
   <groupId>org.apache.livy</groupId>
   <artifactId>livy-main</artifactId>
-  <version>0.8.0.3.3.6.0-1</version>
+  <version>0.8.0.3.3.6.2-1</version>
   <packaging>pom</packaging>
   <name>Livy Project Parent POM</name>
   <description>Livy Project</description>
@@ -99,7 +99,7 @@
     <spark.scala-2.11.version>2.4.5</spark.scala-2.11.version>
     <spark.scala-2.12.version>3.5.1</spark.scala-2.12.version>
     <spark.version>${spark.scala-2.12.version}</spark.version>
-    <hive.version>4.0.0.3.3.6.0-1</hive.version>
+    <hive.version>4.0.0.3.3.6.2-1</hive.version>
     <commons-codec.version>1.14</commons-codec.version>
     <httpclient.version>4.5.13</httpclient.version>
     <httpcore.version>4.4.4</httpcore.version>
@@ -152,7 +152,7 @@
     <ldap-api.version>2.1.2</ldap-api.version>
 
     <curator.version>2.7.1</curator.version>
-    <zookeeper.version>3.8.4.3.3.6.0-1</zookeeper.version>
+    <zookeeper.version>3.8.4.3.3.6.2-1</zookeeper.version>
 
     <!--
       Properties for the copyright header style checks. Modules that use the ASF header
@@ -1274,7 +1274,7 @@
       <id>hadoop3</id>
       <properties>
         <hadoop.major-minor.version>3</hadoop.major-minor.version>
-        <hadoop.version>3.3.6.3.3.6.0-1</hadoop.version>
+        <hadoop.version>3.3.6.3.3.6.2-1</hadoop.version>
       </properties>
     </profile>
     <profile>
