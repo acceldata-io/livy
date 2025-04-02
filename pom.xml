@@ -82,14 +82,14 @@
     <repository>
       <id>nexus-releases</id>
       <name>Releases</name>
-     <url>https://repo1.acceldata.dev/repository/odp-release/</url>
-   </repository>
-   <snapshotRepository>
-     <id>nexus-snapshots</id>
-     <name>Snapshot</name>
-     <url>https://repo1.acceldata.dev/repository/odp-snapshot/</url>
-   </snapshotRepository>
- </distributionManagement>
+      <url>https://repo1.acceldata.dev/repository/odp-staging-release/</url>
+    </repository>
+    <snapshotRepository>
+      <id>nexus-snapshots</id>
+      <name>Snapshot</name>
+      <url>https://repo1.acceldata.dev/repository/odp-staging-snapshot/</url>
+    </snapshotRepository>
+  </distributionManagement>
 
   <properties>
     <asynchttpclient.version>3.0.1</asynchttpclient.version>
