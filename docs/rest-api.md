@@ -357,7 +357,7 @@ Returns code completion candidates for the specified code in the session.
   <tr>
     <td>cursor</td>
     <td>cursor position to get proposals</td>
-    <td>string</td>
+    <td>int</td>
   </tr>
 </table>
 
