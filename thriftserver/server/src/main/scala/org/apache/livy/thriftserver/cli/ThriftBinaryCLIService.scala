@@ -103,12 +103,20 @@ class ThriftBinaryCLIService(override val cliService: LivyCLIService, val oomHoo
       }
       // Server args
       val maxMessageSize = livyConf.getInt(LivyConf.THRIFT_MAX_MESSAGE_SIZE)
+      val requestTimeout =
+        livyConf.getTimeAsMs(LivyConf.THRIFT_LOGIN_TIMEOUT).asInstanceOf[Int]
+      val beBackoffSlotLength =
+        livyConf.getTimeAsMs(LivyConf.THRIFT_LOGIN_BEBACKOFF_SLOT_LENGTH).asInstanceOf[Int]
       val sargs = new TThreadPoolServer.Args(serverSocket)
         .processorFactory(processorFactory)
         .transportFactory(transportFactory)
         .protocolFactory(new TBinaryProtocol.Factory)
         .inputProtocolFactory(
           new TBinaryProtocol.Factory(true, true, maxMessageSize, maxMessageSize))
+        .requestTimeout(requestTimeout)
+        .requestTimeoutUnit(TimeUnit.MILLISECONDS)
+        .beBackoffSlotLength(beBackoffSlotLength)
+        .beBackoffSlotLengthUnit(TimeUnit.MILLISECONDS)
         .executorService(executorService)
       // TCP Server
       server = new TThreadPoolServer(sargs)

@@ -763,12 +763,4 @@ private[thriftserver] class ThriftCLIServerContext extends ServerContext {
   }
 
   def getSessionHandle: SessionHandle = sessionHandle
-
-  override def unwrap[T](aClass: Class[T]): T = {
-    None.asInstanceOf[T]
-  }
-
-  override def isWrapperFor(aClass: Class[_]): Boolean = {
-    false
-  }
 }

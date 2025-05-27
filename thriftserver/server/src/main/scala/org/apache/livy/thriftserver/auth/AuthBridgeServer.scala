@@ -215,7 +215,7 @@ sealed class TUGIAssumingProcessor(
     var useProxy: Boolean) extends TProcessor with Logging {
 
   @throws[TException]
-  override def process(inProt: TProtocol, outProt: TProtocol): Unit = {
+  override def process(inProt: TProtocol, outProt: TProtocol): Boolean = {
     val trans = inProt.getTransport
     if (!trans.isInstanceOf[TSaslServerTransport]) {
       throw new TException(s"Unexpected non-SASL transport ${trans.getClass}")
@@ -231,11 +231,7 @@ sealed class TUGIAssumingProcessor(
     AuthBridgeServer.userAuthMechanism.set(mechanismName)
     if (AuthMethod.PLAIN.getMechanismName.equalsIgnoreCase(mechanismName)) {
       AuthBridgeServer.remoteUser.set(endUser)
-      try {
-        wrapped.process(inProt, outProt)
-      } catch {
-        case te: TException => throw new RuntimeException(te)
-      }
+      return wrapped.process(inProt, outProt)
     }
     AuthBridgeServer.authenticationMethod.set(UserGroupInformation.AuthenticationMethod.KERBEROS)
     if (AuthMethod.TOKEN.getMechanismName.equalsIgnoreCase(mechanismName)) {
@@ -256,12 +252,7 @@ sealed class TUGIAssumingProcessor(
         debug(s"Set remoteUser : ${AuthBridgeServer.remoteUser.get}")
         clientUgi.doAs(new PrivilegedExceptionAction[Boolean]() {
           override def run: Boolean = try {
-            try {
-              wrapped.process(inProt, outProt)
-              return true
-            } catch {
-              case te: TException => throw new RuntimeException(te)
-            }
+            wrapped.process(inProt, outProt)
           } catch {
             case te: TException => throw new RuntimeException(te)
           }
@@ -271,11 +262,7 @@ sealed class TUGIAssumingProcessor(
         val endUserUgi: UserGroupInformation = UserGroupInformation.createRemoteUser(endUser)
         AuthBridgeServer.remoteUser.set(endUserUgi.getShortUserName)
         debug(s"Set remoteUser: ${AuthBridgeServer.remoteUser.get}, from endUser :" + endUser)
-        try {
-          wrapped.process(inProt, outProt)
-        } catch {
-          case te: TException => throw new RuntimeException(te)
-        }
+        wrapped.process(inProt, outProt)
       }
     } catch {
       case rte: RuntimeException if rte.getCause.isInstanceOf[TException] => throw rte.getCause
