@@ -100,7 +100,7 @@
     <spark.scala-2.11.version>2.4.5</spark.scala-2.11.version>
     <spark.scala-2.12.version>3.5.5.3.3.6.2-1</spark.scala-2.12.version>
     <spark.version>${spark.scala-2.12.version}</spark.version>
-    <hive.version>4.0.0.3.3.6.2-1</hive.version>
+    <hive.version>4.0.1.3.3.6.2-1</hive.version>
     <guava.version>32.1.3-jre</guava.version>
     <commons-codec.version>1.14</commons-codec.version>
     <protobuf.java.version>3.25.5</protobuf.java.version>
@@ -132,13 +132,13 @@
     <scala.version>2.12.18</scala.version>
     <!-- spark2 -->
 
-    <spark.version>3.5.1.3.3.6.2-1</spark.version>
+    <spark.version>3.5.5.3.3.6.2-1</spark.version>
     <java.version>11</java.version>
     <py4j.version>0.10.9</py4j.version>
     <json4s.version>3.5.3</json4s.version>
-    <spark.bin.name>spark-3.5.1-bin-hadoop${hadoop.major-minor.version}</spark.bin.name>
+    <spark.bin.name>spark-3.5.5-bin-hadoop${hadoop.major-minor.version}</spark.bin.name>
     <spark.bin.download.url>
-      https://archive.apache.org/dist/spark/spark-3.5.1/${spark.bin.name}.tgz
+      https://archive.apache.org/dist/spark/spark-3.5.5/${spark.bin.name}.tgz
     </spark.bin.download.url>
 
     <!--  used for testing, NCSARequestLog use it for access log  -->
@@ -1567,7 +1567,7 @@
     <profile>
       <id>spark3</id>
       <properties>
-        <spark.version>3.5.1</spark.version>
+        <spark.version>3.5.5.3.3.6.2-1</spark.version>
         <java.version>11</java.version>
         <py4j.version>0.10.9.7</py4j.version>
         <json4s.version>3.7.0-M11</json4s.version>
