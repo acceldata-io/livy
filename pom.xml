@@ -138,7 +138,7 @@
     <json4s.version>3.5.3</json4s.version>
     <spark.bin.name>spark-3.5.5-bin-hadoop${hadoop.major-minor.version}</spark.bin.name>
     <spark.bin.download.url>
-      https://archive.apache.org/dist/spark/spark-3.5.5/${spark.bin.name}.tgz
+      https://mirror.odp.acceldata.dev/staging/3.3.6.2-1/standalone/spark-3.5.5.3.3.6.2-1-bin-3.3.6.3.3.6.2-1.tgz
     </spark.bin.download.url>
 
     <!--  used for testing, NCSARequestLog use it for access log  -->
@@ -1574,7 +1574,7 @@
         <netty.version>4.1.119.Final</netty.version>
         <spark.bin.name>spark-${spark.version}-bin-hadoop${hadoop.major-minor.version}</spark.bin.name>
         <spark.bin.download.url>
-          https://archive.apache.org/dist/spark/spark-${spark.version}/${spark.bin.name}.tgz
+          https://mirror.odp.acceldata.dev/staging/3.3.6.2-1/standalone/spark-3.5.5.3.3.6.2-1-bin-3.3.6.3.3.6.2-1.tgz
         </spark.bin.download.url>
       </properties>
     </profile>
