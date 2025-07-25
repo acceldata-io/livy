@@ -22,7 +22,7 @@
 
   <groupId>org.apache.livy</groupId>
   <artifactId>livy-main</artifactId>
-  <version>0.8.0.3.3.6.2-1</version>
+  <version>0.8.0.3.3.6.2-1009</version>
   <packaging>pom</packaging>
   <name>Livy Project Parent POM</name>
   <description>Livy Project</description>
@@ -98,9 +98,9 @@
     <slf4j.version>1.7.36</slf4j.version>
     <reload4j.version>1.2.25</reload4j.version>
     <spark.scala-2.11.version>2.4.5</spark.scala-2.11.version>
-    <spark.scala-2.12.version>3.5.5.3.3.6.2-1</spark.scala-2.12.version>
+    <spark.scala-2.12.version>3.5.5.3.3.6.2-1009</spark.scala-2.12.version>
     <spark.version>${spark.scala-2.12.version}</spark.version>
-    <hive.version>4.0.1.3.3.6.2-1</hive.version>
+    <hive.version>4.0.1.3.3.6.2-1009</hive.version>
     <guava.version>32.1.3-jre</guava.version>
     <commons-codec.version>1.14</commons-codec.version>
     <protobuf.java.version>3.25.5</protobuf.java.version>
@@ -127,19 +127,19 @@
     <!-- profile controlled parameters, we are setting the defaults here so we can run "mvn package" with default profile values -->
     <!-- hadoop2 -->
     <hadoop.major-minor.version>3</hadoop.major-minor.version>
-    <hadoop.version>3.3.6.3.3.6.2-1</hadoop.version>
+    <hadoop.version>3.3.6.3.3.6.2-1009</hadoop.version>
     <!-- scala2.11 -->
     <scala.binary.version>2.12</scala.binary.version>
     <scala.version>2.12.18</scala.version>
     <!-- spark2 -->
 
-    <spark.version>3.5.5.3.3.6.2-1</spark.version>
+    <spark.version>3.5.5.3.3.6.2-1009</spark.version>
     <java.version>11</java.version>
     <py4j.version>0.10.9</py4j.version>
     <json4s.version>3.5.3</json4s.version>
     <spark.bin.name>spark-3.5.5-bin-hadoop${hadoop.major-minor.version}</spark.bin.name>
     <spark.bin.download.url>
-      https://mirror.odp.acceldata.dev/ODP/standalone/3.3.6.2-1/spark-${spark.version}-bin-${hadoop.version}.tgz
+      http://88.99.99.178/standalone-3.3.6.2-1009/spark-${spark.version}-bin-${hadoop.version}.tgz
     </spark.bin.download.url>
 
     <!--  used for testing, NCSARequestLog use it for access log  -->
@@ -156,7 +156,7 @@
     <ldap-api.version>2.1.2</ldap-api.version>
 
     <curator.version>2.7.1</curator.version>
-    <zookeeper.version>3.8.4.3.3.6.2-1</zookeeper.version>
+    <zookeeper.version>3.8.4.3.3.6.2-1009</zookeeper.version>
 
     <!--
       Properties for the copyright header style checks. Modules that use the ASF header
@@ -1525,7 +1525,7 @@
       <id>hadoop3</id>
       <properties>
         <hadoop.major-minor.version>3</hadoop.major-minor.version>
-        <hadoop.version>3.3.6.3.3.6.2-1</hadoop.version>
+        <hadoop.version>3.3.6.3.3.6.2-1009</hadoop.version>
       </properties>
     </profile>
     <profile>
@@ -1562,14 +1562,14 @@
     <profile>
       <id>spark3</id>
       <properties>
-        <spark.version>3.5.5.3.3.6.2-1</spark.version>
+        <spark.version>3.5.5.3.3.6.2-1009</spark.version>
         <java.version>11</java.version>
         <py4j.version>0.10.9.7</py4j.version>
         <json4s.version>3.7.0-M11</json4s.version>
         <netty.version>4.1.119.Final</netty.version>
         <spark.bin.name>spark-${spark.version}-bin-hadoop${hadoop.major-minor.version}</spark.bin.name>
         <spark.bin.download.url>
-          https://mirror.odp.acceldata.dev/ODP/standalone/3.3.6.2-1/spark-${spark.version}-bin-${hadoop.version}.tgz
+          http://88.99.99.178/standalone-3.3.6.2-1009/spark-${spark.version}-bin-${hadoop.version}.tgz
         </spark.bin.download.url>
       </properties>
     </profile>
