@@ -22,7 +22,7 @@
 
   <groupId>org.apache.livy</groupId>
   <artifactId>livy-main</artifactId>
-  <version>0.8.0.3.3.6.2-SNAPSHOT</version>
+  <version>0.8.0.3.2.3.4-2</version>
   <packaging>pom</packaging>
   <name>Livy Project Parent POM</name>
   <description>Livy Project</description>
@@ -139,7 +139,7 @@
     <json4s.version>3.5.3</json4s.version>
     <spark.bin.name>spark-3.5.5-bin-hadoop${hadoop.major-minor.version}</spark.bin.name>
     <spark.bin.download.url>
-      https://mirror.odp.acceldata.dev/ODP/standalone/3.3.6.2-SNAPSHOT/spark-${spark.version}-bin-${hadoop.version}.tgz
+      https://mirror.odp.acceldata.dev/ODP/standalone/3.2.3.4-2/spark-${spark.version}-bin-${hadoop.version}.tgz
     </spark.bin.download.url>
 
     <!--  used for testing, NCSARequestLog use it for access log  -->
@@ -1569,7 +1569,7 @@
         <netty.version>4.1.119.Final</netty.version>
         <spark.bin.name>spark-${spark.version}-bin-hadoop${hadoop.major-minor.version}</spark.bin.name>
         <spark.bin.download.url>
-          https://mirror.odp.acceldata.dev/ODP/standalone/3.3.6.2-SNAPSHOT/spark-${spark.version}-bin-${hadoop.version}.tgz
+          https://mirror.odp.acceldata.dev/ODP/standalone/3.2.3.4-2/spark-${spark.version}-bin-${hadoop.version}.tgz
         </spark.bin.download.url>
       </properties>
     </profile>
