@@ -22,7 +22,7 @@
   <parent>
     <artifactId>livy-main</artifactId>
     <groupId>org.apache.livy</groupId>
-    <version>0.8.0.3.2.3.5-3</version>
+    <version>0.8.0.3.2.3.5-301</version>
     <relativePath>../../pom.xml</relativePath>
   </parent>
 
