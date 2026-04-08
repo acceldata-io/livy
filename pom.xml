@@ -1566,7 +1566,7 @@
         <java.version>11</java.version>
         <py4j.version>0.10.9.7</py4j.version>
         <json4s.version>3.7.0-M11</json4s.version>
-        <netty.version>4.1.130.Final</netty.version>
+        <netty.version>4.1.132.Final</netty.version>
         <spark.bin.name>spark-${spark.version}-bin-hadoop${hadoop.major-minor.version}</spark.bin.name>
         <spark.bin.download.url>
           https://mirror.odp.acceldata.dev/ODP/standalone/3.3.6.4-1/spark-${spark.version}-bin-${hadoop.version}.tgz
