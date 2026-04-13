@@ -91,7 +91,7 @@
 
     <dependency>
       <groupId>org.apache.spark</groupId>
-      <artifactId>spark-repl_${scala.binary.version}</artifactId>
+      <artifactId>spark-repl_${spark.scala.binary.version}</artifactId>
       <scope>provided</scope>
       <exclusions>
         <exclusion>
@@ -103,7 +103,7 @@
 
     <dependency>
       <groupId>org.apache.spark</groupId>
-      <artifactId>spark-core_${scala.binary.version}</artifactId>
+      <artifactId>spark-core_${spark.scala.binary.version}</artifactId>
       <version>${spark.version}</version>
       <scope>provided</scope>
       <exclusions>
@@ -154,9 +154,39 @@
       </exclusions>
     </dependency>
 
+    <!-- Declared so we can exclude json4s 4.x (transitive of livy-rsc / Spark); Livy uses json4s 3.7. -->
     <dependency>
       <groupId>org.apache.spark</groupId>
-      <artifactId>spark-hive_${scala.binary.version}</artifactId>
+      <artifactId>spark-sql_${spark.scala.binary.version}</artifactId>
+      <version>${spark.version}</version>
+      <scope>provided</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>org.json4s</groupId>
+          <artifactId>json4s-ast_${scala.binary.version}</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.json4s</groupId>
+          <artifactId>json4s-core_${scala.binary.version}</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.json4s</groupId>
+          <artifactId>json4s-jackson_${scala.binary.version}</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.json4s</groupId>
+          <artifactId>json4s-jackson-core_${scala.binary.version}</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.json4s</groupId>
+          <artifactId>json4s-scalap_${scala.binary.version}</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.spark</groupId>
+      <artifactId>spark-hive_${spark.scala.binary.version}</artifactId>
       <scope>provided</scope>
       <exclusions>
         <exclusion>

@@ -85,7 +85,7 @@ class InteractiveSessionServlet(
             val from = math.max(0, lines.length - size)
             val until = from + size
 
-            lines.view(from, until)
+            lines.view(from, until).toSeq
           }
           .getOrElse(Nil)
       } else {
@@ -94,7 +94,7 @@ class InteractiveSessionServlet(
 
     new SessionInfo(session.id, session.name.orNull, session.appId.orNull,
       session.owner, session.state.toString, session.kind.toString,
-      session.appInfo.asJavaMap, logs.asJava,
+      session.appInfo.asJavaMap, logs.toSeq.asJava,
       session.proxyUser.orNull, session.driverMemory.orNull,
       session.driverCores.getOrElse(0), session.executorMemory.orNull,
       session.executorCores.getOrElse(0), session.conf.asJava, session.archives.asJava,

@@ -67,7 +67,7 @@
     </dependency>
     <dependency>
       <groupId>org.apache.spark</groupId>
-      <artifactId>spark-launcher_${scala.binary.version}</artifactId>
+      <artifactId>spark-launcher_${spark.scala.binary.version}</artifactId>
       <exclusions>
         <exclusion>
           <groupId>org.scalatest</groupId>
@@ -75,7 +75,7 @@
         </exclusion>
         <exclusion>
           <groupId>org.apache.spark</groupId>
-          <artifactId>spark-tags_${scala.binary.version}</artifactId>
+          <artifactId>spark-tags_${spark.scala.binary.version}</artifactId>
         </exclusion>
       </exclusions>
     </dependency>
@@ -93,7 +93,7 @@
     </dependency>
     <dependency>
       <groupId>org.apache.spark</groupId>
-      <artifactId>spark-core_${scala.binary.version}</artifactId>
+      <artifactId>spark-core_${spark.scala.binary.version}</artifactId>
       <scope>provided</scope>
       <exclusions>
         <exclusion>
@@ -140,7 +140,7 @@
     </dependency>
     <dependency>
       <groupId>org.apache.spark</groupId>
-      <artifactId>spark-hive_${scala.binary.version}</artifactId>
+      <artifactId>spark-hive_${spark.scala.binary.version}</artifactId>
       <scope>provided</scope>
       <exclusions>
         <exclusion>
@@ -167,7 +167,7 @@
     </dependency>
     <dependency>
       <groupId>org.apache.spark</groupId>
-      <artifactId>spark-sql_${scala.binary.version}</artifactId>
+      <artifactId>spark-sql_${spark.scala.binary.version}</artifactId>
       <scope>provided</scope>
       <exclusions>
         <exclusion>
@@ -182,7 +182,7 @@
     </dependency>
     <dependency>
       <groupId>org.apache.spark</groupId>
-      <artifactId>spark-streaming_${scala.binary.version}</artifactId>
+      <artifactId>spark-streaming_${spark.scala.binary.version}</artifactId>
       <scope>provided</scope>
       <exclusions>
         <exclusion>
@@ -301,7 +301,7 @@
               <excludeArtifactIds>
                 livy-client-common,
                 kryo,
-                spark-launcher_${scala.binary.version},
+                spark-launcher_${spark.scala.binary.version},
               </excludeArtifactIds>
               <outputDirectory>${project.build.directory}/jars</outputDirectory>
             </configuration>

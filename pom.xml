@@ -99,7 +99,8 @@
     <reload4j.version>1.2.25</reload4j.version>
     <spark.scala-2.11.version>2.4.5</spark.scala-2.11.version>
     <spark.scala-2.12.version>4.1.1.3.3.6.4-1</spark.scala-2.12.version>
-    <spark.version>${spark.scala-2.12.version}</spark.version>
+    <spark.scala-2.13.version>4.1.1.3.3.6.4-1</spark.scala-2.13.version>
+    <spark.version>${spark.scala-2.13.version}</spark.version>
     <hive.version>4.0.1.3.3.6.4-1</hive.version>
     <guava.version>32.1.3-jre</guava.version>
     <commons-codec.version>1.14</commons-codec.version>
@@ -129,14 +130,15 @@
     <hadoop.major-minor.version>3</hadoop.major-minor.version>
     <hadoop.version>3.3.6.3.3.6.4-1</hadoop.version>
     <!-- scala2.11 -->
-    <scala.binary.version>2.12</scala.binary.version>
-    <scala.version>2.12.18</scala.version>
-    <!-- spark2 -->
+    <scala.binary.version>2.13</scala.binary.version>
+    <scala.version>2.13.14</scala.version>
+    <!-- spark4 -->
+    <spark.scala.binary.version>2.13</spark.scala.binary.version>
 
     <spark.version>4.1.1.3.3.6.4-1</spark.version>
     <java.version>11</java.version>
     <py4j.version>0.10.9</py4j.version>
-    <json4s.version>3.5.3</json4s.version>
+    <json4s.version>3.7.0-M11</json4s.version>
     <spark.bin.name>spark-4.1.1-bin-hadoop${hadoop.major-minor.version}</spark.bin.name>
     <spark.bin.download.url>
       https://mirror.odp.acceldata.dev/ODP/standalone/3.3.6.4-1/spark-${spark.version}-bin-${hadoop.version}.tgz
@@ -714,7 +716,7 @@
 
       <dependency>
         <groupId>org.apache.spark</groupId>
-        <artifactId>spark-core_${scala.binary.version}</artifactId>
+        <artifactId>spark-core_${spark.scala.binary.version}</artifactId>
         <version>${spark.version}</version>
         <exclusions>
           <exclusion>
@@ -806,7 +808,7 @@
 
       <dependency>
         <groupId>org.apache.spark</groupId>
-        <artifactId>spark-hive_${scala.binary.version}</artifactId>
+        <artifactId>spark-hive_${spark.scala.binary.version}</artifactId>
         <version>${spark.version}</version>
         <exclusions>
           <exclusion>
@@ -842,7 +844,7 @@
 
       <dependency>
         <groupId>org.apache.spark</groupId>
-        <artifactId>spark-launcher_${scala.binary.version}</artifactId>
+        <artifactId>spark-launcher_${spark.scala.binary.version}</artifactId>
         <version>${spark.version}</version>
         <exclusions>
           <exclusion>
@@ -862,7 +864,7 @@
 
       <dependency>
         <groupId>org.apache.spark</groupId>
-        <artifactId>spark-repl_${scala.binary.version}</artifactId>
+        <artifactId>spark-repl_${spark.scala.binary.version}</artifactId>
         <version>${spark.version}</version>
         <exclusions>
           <exclusion>
@@ -874,7 +876,7 @@
 
       <dependency>
         <groupId>org.apache.spark</groupId>
-        <artifactId>spark-sql_${scala.binary.version}</artifactId>
+        <artifactId>spark-sql_${spark.scala.binary.version}</artifactId>
         <version>${spark.version}</version>
         <exclusions>
           <exclusion>
@@ -890,14 +892,14 @@
 
       <dependency>
         <groupId>org.apache.spark</groupId>
-        <artifactId>spark-streaming_${scala.binary.version}</artifactId>
+        <artifactId>spark-streaming_${spark.scala.binary.version}</artifactId>
         <version>${spark.version}</version>
         <scope>provided</scope>
       </dependency>
 
       <dependency>
         <groupId>org.apache.spark</groupId>
-        <artifactId>spark-yarn_${scala.binary.version}</artifactId>
+        <artifactId>spark-yarn_${spark.scala.binary.version}</artifactId>
         <version>${spark.version}</version>
       </dependency>
 
@@ -1561,6 +1563,21 @@
     -->
     <profile>
       <id>spark3</id>
+      <properties>
+        <spark.version>4.1.1.3.3.6.4-1</spark.version>
+        <java.version>11</java.version>
+        <py4j.version>0.10.9.7</py4j.version>
+        <json4s.version>3.7.0-M11</json4s.version>
+        <netty.version>4.1.130.Final</netty.version>
+        <spark.bin.name>spark-${spark.version}-bin-hadoop${hadoop.major-minor.version}</spark.bin.name>
+        <spark.bin.download.url>
+          https://mirror.odp.acceldata.dev/ODP/standalone/3.3.6.4-1/spark-${spark.version}-bin-${hadoop.version}.tgz
+        </spark.bin.download.url>
+      </properties>
+    </profile>
+
+    <profile>
+      <id>spark4</id>
       <properties>
         <spark.version>4.1.1.3.3.6.4-1</spark.version>
         <java.version>11</java.version>

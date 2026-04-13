@@ -291,7 +291,7 @@ private class PythonInterpreter(
     stdin.println(write(request))
     stdin.flush()
 
-    Option(stdout.readLine()).map { case line =>
+    Option(stdout.readLine()).map { line =>
       parse(line)
     }
   }
