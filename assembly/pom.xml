@@ -39,18 +39,68 @@
       <groupId>${project.groupId}</groupId>
       <artifactId>livy-rsc</artifactId>
       <version>${project.version}</version>
+      <exclusions>
+        <exclusion><groupId>org.scala-lang</groupId><artifactId>scala-library</artifactId></exclusion>
+        <exclusion><groupId>org.scalatra</groupId><artifactId>scalatra_2.12</artifactId></exclusion>
+        <exclusion><groupId>org.scalatra</groupId><artifactId>scalatra-common_2.12</artifactId></exclusion>
+        <exclusion><groupId>org.scalatra</groupId><artifactId>scalatra-json_2.12</artifactId></exclusion>
+        <exclusion><groupId>org.scalatra</groupId><artifactId>scalatra-jetty_2.12</artifactId></exclusion>
+        <exclusion><groupId>org.scalatra</groupId><artifactId>scalatra-metrics_2.12</artifactId></exclusion>
+        <exclusion><groupId>com.fasterxml.jackson.module</groupId><artifactId>jackson-module-scala_2.12</artifactId></exclusion>
+        <exclusion><groupId>org.json4s</groupId><artifactId>json4s-ast_2.12</artifactId></exclusion>
+        <exclusion><groupId>org.json4s</groupId><artifactId>json4s-core_2.12</artifactId></exclusion>
+        <exclusion><groupId>org.json4s</groupId><artifactId>json4s-jackson_2.12</artifactId></exclusion>
+        <exclusion><groupId>org.json4s</groupId><artifactId>json4s-scalap_2.12</artifactId></exclusion>
+        <exclusion><groupId>*</groupId><artifactId>*_2.12</artifactId></exclusion>
+      </exclusions>
     </dependency>
 
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>livy-repl_${scala.binary.version}</artifactId>
       <version>${project.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>*</groupId>
+          <artifactId>*_2.12</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
 
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>livy-server</artifactId>
       <version>${project.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>*</groupId>
+          <artifactId>*_2.12</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.scala-lang</groupId>
+          <artifactId>scala-library</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.scala-lang</groupId>
+      <artifactId>scala-library</artifactId>
+      <version>${scala.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.scalatra</groupId>
+      <artifactId>scalatra_${scala.binary.version}</artifactId>
+      <version>${scalatra.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.module</groupId>
+      <artifactId>jackson-module-scala_${scala.binary.version}</artifactId>
+      <version>${jackson.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.json4s</groupId>
+      <artifactId>json4s-jackson_${scala.binary.version}</artifactId>
+      <version>${json4s.version}</version>
     </dependency>
   </dependencies>
 
