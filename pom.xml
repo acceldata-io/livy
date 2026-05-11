@@ -131,7 +131,7 @@
     <hadoop.version>3.3.6.3.3.6.4-1</hadoop.version>
     <!-- scala2.11 -->
     <scala.binary.version>2.13</scala.binary.version>
-    <scala.version>2.13.14</scala.version>
+    <scala.version>2.13.17</scala.version>
     <!-- spark4 -->
     <spark.scala.binary.version>2.13</spark.scala.binary.version>
 
@@ -1584,6 +1584,9 @@
         <py4j.version>0.10.9.7</py4j.version>
         <json4s.version>3.7.0-M11</json4s.version>
         <netty.version>4.1.132.Final</netty.version>
+        <scala.binary.version>2.13</scala.binary.version>
+        <scala.version>2.13.17</scala.version>
+        <spark.scala.binary.version>2.13</spark.scala.binary.version>
         <spark.bin.name>spark-${spark.version}-bin-hadoop${hadoop.major-minor.version}</spark.bin.name>
         <spark.bin.download.url>
           https://mirror.odp.acceldata.dev/ODP/standalone/3.3.6.4-1/spark-${spark.version}-bin-${hadoop.version}.tgz
