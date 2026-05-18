@@ -22,7 +22,7 @@
   <parent>
     <artifactId>livy-main</artifactId>
     <groupId>org.apache.livy</groupId>
-    <version>0.8.0.3.3.6.3-SNAPSHOT</version>
+    <version>0.8.0.3.3.6.4-1</version>
     <relativePath>../../pom.xml</relativePath>
   </parent>
 
@@ -343,7 +343,7 @@
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-lang3</artifactId>
-      <version>3.14.0</version>
+      <version>3.18.0</version>
     </dependency>
   </dependencies>
   <build>
