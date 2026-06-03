@@ -92,15 +92,16 @@
   </distributionManagement>
 
   <properties>
+    <odp.release.version>3.3.6.5-SNAPSHOT</odp.release.version>
     <asynchttpclient.version>3.0.1</asynchttpclient.version>
     <commons.io.version>2.16.1</commons.io.version>
     <hadoop.scope>compile</hadoop.scope>
     <slf4j.version>1.7.36</slf4j.version>
     <reload4j.version>1.2.25</reload4j.version>
     <spark.scala-2.11.version>2.4.5</spark.scala-2.11.version>
-    <spark.scala-2.12.version>3.5.1.3.3.6.5-SNAPSHOT</spark.scala-2.12.version>
+    <spark.scala-2.12.version>3.5.1.${odp.release.version}</spark.scala-2.12.version>
     <spark.version>${spark.scala-2.12.version}</spark.version>
-    <hive.version>4.0.1.3.3.6.5-SNAPSHOT</hive.version>
+    <hive.version>4.0.1.${odp.release.version}</hive.version>
     <guava.version>32.1.3-jre</guava.version>
     <commons-codec.version>1.14</commons-codec.version>
     <protobuf.java.version>3.25.5</protobuf.java.version>
@@ -127,19 +128,20 @@
     <!-- profile controlled parameters, we are setting the defaults here so we can run "mvn package" with default profile values -->
     <!-- hadoop2 -->
     <hadoop.major-minor.version>3</hadoop.major-minor.version>
-    <hadoop.version>3.3.6.3.3.6.5-SNAPSHOT</hadoop.version>
+    <hadoop.version>3.3.6.${odp.release.version}</hadoop.version>
     <!-- scala2.11 -->
     <scala.binary.version>2.12</scala.binary.version>
     <scala.version>2.12.18</scala.version>
     <!-- spark2 -->
 
-    <spark.version>3.5.1.3.3.6.5-SNAPSHOT</spark.version>
+    <spark.version>3.5.1.${odp.release.version}</spark.version>
     <java.version>11</java.version>
     <py4j.version>0.10.9</py4j.version>
     <json4s.version>3.5.3</json4s.version>
+    <standalone.tarballs.url>https://mirror.odp.acceldata.dev/ODP/standalone/${odp.release.version}</standalone.tarballs.url>
     <spark.bin.name>spark-3.5.1-bin-hadoop${hadoop.major-minor.version}</spark.bin.name>
     <spark.bin.download.url>
-      https://mirror.odp.acceldata.dev/ODP/standalone/3.3.6.5-SNAPSHOT/spark-${spark.version}-bin-${hadoop.version}.tgz
+      ${standalone.tarballs.url}/spark-${spark.version}-bin-${hadoop.version}.tgz
     </spark.bin.download.url>
 
     <!--  used for testing, NCSARequestLog use it for access log  -->
@@ -156,7 +158,7 @@
     <ldap-api.version>2.1.2</ldap-api.version>
 
     <curator.version>2.7.1</curator.version>
-    <zookeeper.version>3.8.4.3.3.6.5-SNAPSHOT</zookeeper.version>
+    <zookeeper.version>3.8.4.${odp.release.version}</zookeeper.version>
 
     <!--
       Properties for the copyright header style checks. Modules that use the ASF header
@@ -1525,7 +1527,7 @@
       <id>hadoop3</id>
       <properties>
         <hadoop.major-minor.version>3</hadoop.major-minor.version>
-        <hadoop.version>3.3.6.3.3.6.5-SNAPSHOT</hadoop.version>
+        <hadoop.version>3.3.6.${odp.release.version}</hadoop.version>
       </properties>
     </profile>
     <profile>
@@ -1562,15 +1564,12 @@
     <profile>
       <id>spark3</id>
       <properties>
-        <spark.version>3.5.1.3.3.6.5-SNAPSHOT</spark.version>
+        <spark.version>3.5.1.${odp.release.version}</spark.version>
         <java.version>11</java.version>
         <py4j.version>0.10.9.7</py4j.version>
         <json4s.version>3.7.0-M11</json4s.version>
         <netty.version>4.1.132.Final</netty.version>
         <spark.bin.name>spark-${spark.version}-bin-hadoop${hadoop.major-minor.version}</spark.bin.name>
-        <spark.bin.download.url>
-          https://mirror.odp.acceldata.dev/ODP/standalone/3.3.6.5-SNAPSHOT/spark-${spark.version}-bin-${hadoop.version}.tgz
-        </spark.bin.download.url>
       </properties>
     </profile>
 
