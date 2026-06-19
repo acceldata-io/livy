@@ -142,8 +142,8 @@ class SparkYarnApp private[utils] (
 
   override def log(): IndexedSeq[String] =
     (("stdout: " +: process.map(_.inputLines).getOrElse(ArrayBuffer.empty[String])) ++
-      ("\nstderr: " +: process.map(_.errorLines).getOrElse(ArrayBuffer.empty[String])) ++
-      ("\nYARN Diagnostics: " +: yarnDiagnostics)).toIndexedSeq
+    ("\nstderr: " +: process.map(_.errorLines).getOrElse(ArrayBuffer.empty[String])) ++
+    ("\nYARN Diagnostics: " +: yarnDiagnostics)).toIndexedSeq
 
   override def kill(): Unit = synchronized {
     killed = true
