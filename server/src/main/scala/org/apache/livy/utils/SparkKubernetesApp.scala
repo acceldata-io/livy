@@ -636,7 +636,7 @@ private[utils] case class KubernetesAppReport(driver: Option[Pod], executors: Se
 
   private def buildSparkPodDiagnosticsPrettyString(pod: Pod): String = {
     import scala.collection.JavaConverters._
-    def printMap(map: Map[Any, Any]): String = map.map {
+    def printMap(map: Map[_, _]): String = map.map[String] {
       case (key, value) => s"$key=$value"
     }.mkString(", ")
 

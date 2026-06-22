@@ -488,7 +488,7 @@ class InteractiveSession(
             sessionStore.save(RECOVERY_SESSION_TYPE, recoveryMetadata)
           }
         case Failure(e) => warn("Fail to get rsc uri", e)
-      }
+      }(sessionManageExecutors)
 
       // Send a dummy job that will return once the client is ready to be used, and set the
       // state to "idle" at that point.
