@@ -103,21 +103,24 @@
     <spark.version>${spark.scala-2.13.version}</spark.version>
     <kubernetes.client.version>5.6.0</kubernetes.client.version>
     <hive.version>4.1.0.3.4.3.0-1</hive.version>
+    <guava.version>32.1.3-jre</guava.version>
     <commons-codec.version>1.15</commons-codec.version>
     <commons-lang3.version>3.17.0</commons-lang3.version>
+    <protobuf.java.version>3.25.5</protobuf.java.version>
+    <hadoop-thirdparty.version>1.4.0</hadoop-thirdparty.version>
     <httpclient.version>4.5.14</httpclient.version>
     <httpcore.version>4.4.16</httpcore.version>
-    <jackson.version>2.12.7</jackson.version>
-    <jackson-databind.version>2.12.7.1</jackson-databind.version>
+    <jackson.version>2.15.4</jackson.version>
+    <jackson-databind.version>${jackson.version}</jackson-databind.version>
     <jacoco.version>0.8.13</jacoco.version>
     <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
-    <jetty.version>9.4.56.v20240826</jetty.version>
+    <jetty.version>9.4.57.v20241219</jetty.version>
     <junit.version>4.13.1</junit.version>
-    <libthrift.version>0.9.3</libthrift.version>
+    <libthrift.version>0.16.0</libthrift.version>
     <kryo.version>4.0.2</kryo.version>
-    <metrics.version>3.1.0</metrics.version>
+    <metrics.version>4.2.30</metrics.version>
     <mockito.version>1.10.19</mockito.version>
-    <netty.version>4.1.86.Final</netty.version>
+    <netty.version>4.1.130.Final</netty.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <scalatest.version>3.0.8</scalatest.version>
     <scalatra.version>2.6.5</scalatra.version>
@@ -151,8 +154,8 @@
     <spark.version>4.1.2.3.4.3.0-1</spark.version>
     <java.version>17</java.version>
     <py4j.version>0.10.9</py4j.version>
-    <json4s.version>3.5.3</json4s.version>
-    <spark.bin.name>spark-${spark.version}-bin-hadoop${hadoop.major-minor.version}</spark.bin.name>
+    <json4s.version>3.7.0-M11</json4s.version>
+    <spark.bin.name>spark-4.1.2-bin-hadoop${hadoop.major-minor.version}</spark.bin.name>
     <spark.bin.download.url>
       https://mirror.odp.acceldata.dev/ODP/standalone/3.4.3.0-1/spark-${spark.version}-bin-${hadoop.version}.tgz
     </spark.bin.download.url>
@@ -169,7 +172,7 @@
     <skipPySpark3Tests>false</skipPySpark3Tests>
 
     <!-- Required for testing LDAP integration -->
-    <apacheds.version>2.0.0.AM26</apacheds.version>
+    <apacheds.version>2.0.0.AM27</apacheds.version>
     <ldap-api.version>2.1.2</ldap-api.version>
 
     <curator.version>2.7.1</curator.version>
@@ -259,9 +262,16 @@
     <module>server</module>
     <module>test-lib</module>
     <module>integration-test</module>
+    <module>thriftserver/server</module>
   </modules>
 
   <dependencies>
+
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-configuration2</artifactId>
+      <version>2.11.0</version>
+    </dependency>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -290,10 +300,19 @@
       <scope>test</scope>
       <exclusions>
         <exclusion>
+          <groupId>org.eclipse.jetty</groupId>
+          <artifactId>jetty-webapp</artifactId>
+        </exclusion>
+        <exclusion>
           <groupId>org.mockito</groupId>
           <artifactId>*</artifactId>
         </exclusion>
       </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.hadoop.thirdparty</groupId>
+      <artifactId>hadoop-shaded-protobuf_3_25</artifactId>
+      <version>${hadoop-thirdparty.version}</version>
     </dependency>
 
   </dependencies>
@@ -391,6 +410,18 @@
         <version>${hadoop.version}</version>
         <exclusions>
           <exclusion>
+            <groupId>com.nimbusds</groupId>
+            <artifactId>nimbus-jose-jwt</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>net.minidev</groupId>
+            <artifactId>json-smart</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+          </exclusion>
+          <exclusion>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
           </exclusion>
@@ -401,11 +432,48 @@
         </exclusions>
       </dependency>
 
+
       <dependency>
         <groupId>org.apache.hadoop</groupId>
         <artifactId>hadoop-common</artifactId>
         <version>${hadoop.version}</version>
         <exclusions>
+          <exclusion>
+            <groupId>org.apache.hadoop.thirdparty</groupId>
+            <artifactId>hadoop-shaded-avro_1_11</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-configuration2</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>com.nimbusds</groupId>
+            <artifactId>nimbus-jose-jwt</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>net.minidev</groupId>
+            <artifactId>json-smart</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>com.fasterxml.woodstox</groupId>
+            <artifactId>woodstox-core</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>dnsjava</groupId>
+            <artifactId>dnsjava</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>jsp-api</artifactId>
+          </exclusion>
           <exclusion>
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
@@ -444,6 +512,38 @@
         <version>${hadoop.version}</version>
         <exclusions>
           <exclusion>
+            <groupId>org.apache.hadoop.thirdparty</groupId>
+            <artifactId>hadoop-shaded-avro_1_11</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-configuration2</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>com.nimbusds</groupId>
+            <artifactId>nimbus-jose-jwt</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>net.minidev</groupId>
+            <artifactId>json-smart</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>com.fasterxml.woodstox</groupId>
+            <artifactId>woodstox-core</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>dnsjava</groupId>
+            <artifactId>dnsjava</artifactId>
+          </exclusion>
+          <exclusion>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
           </exclusion>
@@ -471,6 +571,22 @@
         <artifactId>hadoop-client</artifactId>
         <version>${hadoop.version}</version>
         <exclusions>
+          <exclusion>
+            <groupId>org.apache.hadoop.thirdparty</groupId>
+            <artifactId>hadoop-shaded-avro_1_11</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>com.squareup.okhttp</groupId>
+            <artifactId>okhttp</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+          </exclusion>
           <exclusion>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
@@ -509,11 +625,12 @@
       <dependency>
         <groupId>org.apache.hadoop</groupId>
         <artifactId>hadoop-hdfs</artifactId>
+        <classifier>tests</classifier>
         <version>${hadoop.version}</version>
         <exclusions>
           <exclusion>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java</artifactId>
           </exclusion>
         </exclusions>
       </dependency>
@@ -546,6 +663,10 @@
         <artifactId>hadoop-yarn-client</artifactId>
         <version>${hadoop.version}</version>
         <exclusions>
+          <exclusion>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java</artifactId>
+          </exclusion>
           <exclusion>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
@@ -602,6 +723,18 @@
         <version>${hadoop.version}</version>
         <exclusions>
           <exclusion>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcprov-jdk15on</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>dnsjava</groupId>
+            <artifactId>dnsjava</artifactId>
+          </exclusion>
+          <exclusion>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
           </exclusion>
@@ -630,9 +763,45 @@
 
       <dependency>
         <groupId>org.apache.spark</groupId>
-        <artifactId>spark-core_${scala.binary.version}</artifactId>
+        <artifactId>spark-core_${spark.scala.binary.version}</artifactId>
         <version>${spark.version}</version>
         <exclusions>
+          <exclusion>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-configuration2</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>com.nimbusds</groupId>
+            <artifactId>nimbus-jose-jwt</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>net.minidev</groupId>
+            <artifactId>json-smart</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>com.fasterxml.woodstox</groupId>
+            <artifactId>woodstox-core</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>com.squareup.okhttp</groupId>
+            <artifactId>okhttp</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>org.apache.avro</groupId>
+            <artifactId>avro</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>org.apache.avro</groupId>
+            <artifactId>avro-mapred</artifactId>
+          </exclusion>
           <exclusion>
             <groupId>org.eclipse.jetty.orbit</groupId>
             <artifactId>javax.servlet</artifactId>
@@ -677,24 +846,52 @@
             <groupId>org.javassist</groupId>
             <artifactId>javassist</artifactId>
           </exclusion>
-        </exclusions>
-      </dependency>
-
-      <dependency>
-        <groupId>org.apache.spark</groupId>
-        <artifactId>spark-hive_${scala.binary.version}</artifactId>
-        <version>${spark.version}</version>
-        <exclusions>
           <exclusion>
-            <groupId>log4j</groupId>
-            <artifactId>apache-log4j-extras</artifactId>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-mapper-asl</artifactId>
           </exclusion>
         </exclusions>
       </dependency>
 
       <dependency>
         <groupId>org.apache.spark</groupId>
-        <artifactId>spark-launcher_${scala.binary.version}</artifactId>
+        <artifactId>spark-hive_${spark.scala.binary.version}</artifactId>
+        <version>${spark.version}</version>
+        <exclusions>
+          <exclusion>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>org.apache.thrift</groupId>
+            <artifactId>libfb303</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>org.apache.avro</groupId>
+            <artifactId>avro</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>org.apache.avro</groupId>
+            <artifactId>avro-mapred</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>log4j</groupId>
+            <artifactId>apache-log4j-extras</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-mapper-asl</artifactId>
+          </exclusion>
+        </exclusions>
+      </dependency>
+
+      <dependency>
+        <groupId>org.apache.spark</groupId>
+        <artifactId>spark-launcher_${spark.scala.binary.version}</artifactId>
         <version>${spark.version}</version>
         <exclusions>
           <exclusion>
@@ -714,7 +911,7 @@
 
       <dependency>
         <groupId>org.apache.spark</groupId>
-        <artifactId>spark-repl_${scala.binary.version}</artifactId>
+        <artifactId>spark-repl_${spark.scala.binary.version}</artifactId>
         <version>${spark.version}</version>
         <exclusions>
           <exclusion>
@@ -726,26 +923,30 @@
 
       <dependency>
         <groupId>org.apache.spark</groupId>
-        <artifactId>spark-sql_${scala.binary.version}</artifactId>
+        <artifactId>spark-sql_${spark.scala.binary.version}</artifactId>
         <version>${spark.version}</version>
         <exclusions>
           <exclusion>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
           </exclusion>
+          <exclusion>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java</artifactId>
+          </exclusion>
         </exclusions>
       </dependency>
 
       <dependency>
         <groupId>org.apache.spark</groupId>
-        <artifactId>spark-streaming_${scala.binary.version}</artifactId>
+        <artifactId>spark-streaming_${spark.scala.binary.version}</artifactId>
         <version>${spark.version}</version>
         <scope>provided</scope>
       </dependency>
 
       <dependency>
         <groupId>org.apache.spark</groupId>
-        <artifactId>spark-yarn_${scala.binary.version}</artifactId>
+        <artifactId>spark-yarn_${spark.scala.binary.version}</artifactId>
         <version>${spark.version}</version>
       </dependency>
 
@@ -837,30 +1038,60 @@
         <groupId>org.scalatra</groupId>
         <artifactId>scalatra_${scala.binary.version}</artifactId>
         <version>${scalatra.version}</version>
+        <exclusions>
+          <exclusion>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-webapp</artifactId>
+          </exclusion>
+        </exclusions>
       </dependency>
 
       <dependency>
         <groupId>org.scalatra</groupId>
         <artifactId>scalatra-jetty_${scala.binary.version}</artifactId>
         <version>${scalatra.version}</version>
+        <exclusions>
+          <exclusion>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-webapp</artifactId>
+          </exclusion>
+        </exclusions>
       </dependency>
 
       <dependency>
         <groupId>org.scalatra</groupId>
         <artifactId>scalatra-json_${scala.binary.version}</artifactId>
         <version>${scalatra.version}</version>
+        <exclusions>
+          <exclusion>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-webapp</artifactId>
+          </exclusion>
+        </exclusions>
       </dependency>
 
       <dependency>
         <groupId>org.scalatra</groupId>
         <artifactId>scalatra-metrics_${scala.binary.version}</artifactId>
         <version>${scalatra.version}</version>
+        <exclusions>
+          <exclusion>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-webapp</artifactId>
+          </exclusion>
+        </exclusions>
       </dependency>
 
       <dependency>
         <groupId>org.scalatra</groupId>
         <artifactId>scalatra-test_${scala.binary.version}</artifactId>
         <version>${scalatra.version}</version>
+        <exclusions>
+          <exclusion>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-webapp</artifactId>
+          </exclusion>
+        </exclusions>
       </dependency>
 
       <dependency>
@@ -879,6 +1110,12 @@
         <groupId>org.slf4j</groupId>
         <artifactId>slf4j-reload4j</artifactId>
         <version>${slf4j.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>commons-io</groupId>
+        <artifactId>commons-io</artifactId>
+        <version>${commons.io.version}</version>
       </dependency>
 
     </dependencies>
@@ -1344,13 +1581,6 @@
       </properties>
     </profile>
     <profile>
-      <id>scala-2.11</id>
-      <properties>
-        <scala.binary.version>2.11</scala.binary.version>
-        <scala.version>2.11.12</scala.version>
-      </properties>
-    </profile>
-    <profile>
       <id>scala-2.12</id>
       <properties>
         <scala.binary.version>2.12</scala.binary.version>
@@ -1377,8 +1607,8 @@
     <profile>
       <id>spark2</id>
       <properties>
-        <spark.version>4.1.2.3.4.3.0-1</spark.version>
-        <java.version>1.8</java.version>
+        <spark.version>2.4.5</spark.version>
+        <java.version>11</java.version>
         <py4j.version>0.10.9</py4j.version>
         <json4s.version>3.5.3</json4s.version>
         <spark.bin.name>spark-${spark.version}-bin-hadoop${hadoop.major-minor.version}</spark.bin.name>
@@ -1397,7 +1627,7 @@
         <java.version>11</java.version>
         <py4j.version>0.10.9.7</py4j.version>
         <json4s.version>3.7.0-M11</json4s.version>
-        <netty.version>4.1.96.Final</netty.version>
+        <netty.version>4.1.130.Final</netty.version>
         <jackson.version>2.15.2</jackson.version>
         <jackson-databind.version>2.15.2</jackson-databind.version>
         <spark.bin.name>spark-${spark.version}-bin-hadoop${hadoop.major-minor.version}</spark.bin.name>
@@ -1415,7 +1645,7 @@
         <java.version>17</java.version>
         <py4j.version>0.10.9.7</py4j.version>
         <json4s.version>3.7.0-M11</json4s.version>
-        <netty.version>4.1.132.Final</netty.version>
+        <netty.version>4.1.130.Final</netty.version>
         <scala.binary.version>2.13</scala.binary.version>
         <scala.version>2.13.17</scala.version>
         <spark.scala.binary.version>2.13</spark.scala.binary.version>

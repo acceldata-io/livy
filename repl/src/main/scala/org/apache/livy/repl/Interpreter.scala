@@ -52,4 +52,6 @@ trait Interpreter {
 
   /** Shut down the interpreter. */
   def close(): Unit
+  /** Add a jar to the interpreter classpath. No-op by default. */
+  def addJar(path: String): Unit = {}
 }

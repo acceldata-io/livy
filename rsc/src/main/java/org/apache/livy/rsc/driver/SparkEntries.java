@@ -24,7 +24,6 @@ import org.apache.spark.SparkContext;
 import org.apache.spark.api.java.JavaSparkContext;
 import org.apache.spark.sql.SQLContext;
 import org.apache.spark.sql.SparkSession;
-import org.apache.spark.sql.SparkSession$;
 import org.apache.spark.sql.hive.HiveContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -52,7 +51,7 @@ public class SparkEntries {
           SparkContext scalaSc = SparkContext.getOrCreate(conf);
           sc = new JavaSparkContext(scalaSc);
           LOG.info("Spark context finished initialization in {}ms",
-            TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - t1));
+              TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - t1));
         }
       }
     }
@@ -68,12 +67,12 @@ public class SparkEntries {
             SparkConf conf = sc().getConf();
             String catalog = conf.get("spark.sql.catalogImplementation", "in-memory").toLowerCase();
 
-            if (catalog.equals("hive") && SparkSession$.MODULE$.hiveClassesArePresent()) {
+            if (catalog.equals("hive") && hiveClassesArePresent()) {
               ClassLoader loader = Thread.currentThread().getContextClassLoader() != null ?
-                Thread.currentThread().getContextClassLoader() : getClass().getClassLoader();
+                  Thread.currentThread().getContextClassLoader() : getClass().getClassLoader();
               if (loader.getResource("hive-site.xml") == null) {
                 LOG.warn("livy.repl.enable-hive-context is true but no hive-site.xml found on " +
-                 "classpath");
+                    "classpath");
               }
 
               builder.enableHiveSupport();
@@ -113,13 +112,13 @@ public class SparkEntries {
         if (hivectx == null) {
           SparkConf conf = sc().getConf();
           if (conf.getBoolean("spark.repl.enableHiveContext", false) ||
-            conf.get("spark.sql.catalogImplementation", "in-memory").toLowerCase()
-              .equals("hive")) {
+              conf.get("spark.sql.catalogImplementation", "in-memory").toLowerCase()
+                  .equals("hive")) {
             ClassLoader loader = Thread.currentThread().getContextClassLoader() != null ?
-              Thread.currentThread().getContextClassLoader() : getClass().getClassLoader();
+                Thread.currentThread().getContextClassLoader() : getClass().getClassLoader();
             if (loader.getResource("hive-site.xml") == null) {
               LOG.warn("livy.repl.enable-hive-context is true but no hive-site.xml found on " +
-               "classpath.");
+                  "classpath.");
             }
             hivectx = new HiveContext(sc().sc());
             LOG.info("Created HiveContext.");
@@ -128,6 +127,20 @@ public class SparkEntries {
       }
     }
     return hivectx;
+  }
+
+  /**
+   * Check if Hive classes are available on the classpath.
+   * Replaces SparkSession$.MODULE$.hiveClassesArePresent() which was removed in Spark 4.x.
+   */
+  private boolean hiveClassesArePresent() {
+    try {
+      Class.forName("org.apache.hadoop.hive.conf.HiveConf");
+      Class.forName("org.apache.spark.sql.hive.HiveSessionStateBuilder");
+      return true;
+    } catch (ClassNotFoundException e) {
+      return false;
+    }
   }
 
   public synchronized void stop() {
