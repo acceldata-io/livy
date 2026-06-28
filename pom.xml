@@ -1357,6 +1357,13 @@
         <scala.version>2.12.18</scala.version>
       </properties>
     </profile>
+    <profile>
+      <id>scala-2.13</id>
+      <properties>
+        <scala.binary.version>2.13</scala.binary.version>
+        <scala.version>2.13.17</scala.version>
+      </properties>
+    </profile>
 
     <profile>
       <id>thriftserver</id>
