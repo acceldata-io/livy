@@ -22,7 +22,7 @@
 
   <groupId>org.apache.livy</groupId>
   <artifactId>livy-main</artifactId>
-  <version>0.9.0-incubating</version>
+  <version>0.9.0.3.4.3.0-1</version>
   <packaging>pom</packaging>
   <name>Livy Project Parent POM</name>
   <description>Livy Project</description>
@@ -77,16 +77,32 @@
     </mailingList>
   </mailingLists>
 
+
+  <distributionManagement>
+    <repository>
+      <id>nexus-releases</id>
+      <name>Releases</name>
+      <url>https://repo1.acceldata.dev/repository/odp-staging-release/</url>
+    </repository>
+    <snapshotRepository>
+      <id>nexus-snapshots</id>
+      <name>Snapshot</name>
+      <url>https://repo1.acceldata.dev/repository/odp-staging-snapshot/</url>
+    </snapshotRepository>
+  </distributionManagement>
+
   <properties>
-    <asynchttpclient.version>2.10.1</asynchttpclient.version>
+    <asynchttpclient.version>3.0.1</asynchttpclient.version>
+    <commons.io.version>2.16.1</commons.io.version>
     <hadoop.scope>compile</hadoop.scope>
     <slf4j.version>1.7.36</slf4j.version>
     <reload4j.version>1.2.26</reload4j.version>
     <spark.scala-2.11.version>2.4.5</spark.scala-2.11.version>
-    <spark.scala-2.12.version>2.4.5</spark.scala-2.12.version>
-    <spark.version>${spark.scala-2.11.version}</spark.version>
+    <spark.scala-2.12.version>4.1.2.3.4.3.0-1</spark.scala-2.12.version>
+    <spark.scala-2.13.version>4.1.2.3.4.3.0-1</spark.scala-2.13.version>
+    <spark.version>${spark.scala-2.13.version}</spark.version>
     <kubernetes.client.version>5.6.0</kubernetes.client.version>
-    <hive.version>3.0.0</hive.version>
+    <hive.version>4.1.0.3.4.3.0-1</hive.version>
     <commons-codec.version>1.15</commons-codec.version>
     <commons-lang3.version>3.17.0</commons-lang3.version>
     <httpclient.version>4.5.14</httpclient.version>
@@ -105,7 +121,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <scalatest.version>3.0.8</scalatest.version>
     <scalatra.version>2.6.5</scalatra.version>
-    <java.version>1.8</java.version>
+    <java.version>17</java.version>
     <extraJavaTestArgs>
       -XX:+IgnoreUnrecognizedVMOptions
       --add-opens=java.base/java.lang.invoke=ALL-UNNAMED
@@ -126,19 +142,19 @@
     <spark.home>${execution.root}/dev/spark</spark.home>
     <!-- profile controlled parameters, we are setting the defaults here so we can run "mvn package" with default profile values -->
     <!-- hadoop2 -->
-    <hadoop.major-minor.version>2.7</hadoop.major-minor.version>
-    <hadoop.version>2.7.3</hadoop.version>
+    <hadoop.major-minor.version>3</hadoop.major-minor.version>
+    <hadoop.version>3.4.3.3.4.3.0-1</hadoop.version>
     <!-- scala2.11 -->
-    <scala.binary.version>2.11</scala.binary.version>
-    <scala.version>2.11.12</scala.version>
-    <!-- spark2 -->
-    <spark.version>2.4.5</spark.version>
-    <java.version>1.8</java.version>
+    <scala.binary.version>2.13</scala.binary.version>
+    <scala.version>2.13.17</scala.version>
+    <!-- spark4 -->
+    <spark.version>4.1.2.3.4.3.0-1</spark.version>
+    <java.version>17</java.version>
     <py4j.version>0.10.9</py4j.version>
     <json4s.version>3.5.3</json4s.version>
     <spark.bin.name>spark-${spark.version}-bin-hadoop${hadoop.major-minor.version}</spark.bin.name>
     <spark.bin.download.url>
-      https://archive.apache.org/dist/spark/spark-${spark.version}/${spark.bin.name}.tgz
+      https://mirror.odp.acceldata.dev/ODP/standalone/3.4.3.0-1/spark-${spark.version}-bin-${hadoop.version}.tgz
     </spark.bin.download.url>
 
     <!--  used for testing, NCSARequestLog use it for access log  -->
@@ -157,7 +173,7 @@
     <ldap-api.version>2.1.2</ldap-api.version>
 
     <curator.version>2.7.1</curator.version>
-    <zookeeper.version>3.4.6</zookeeper.version>
+    <zookeeper.version>3.8.6.3.4.3.0-1</zookeeper.version>
 
     <!--
       Properties for the copyright header style checks. Modules that use the ASF header
@@ -201,26 +217,25 @@
 
   <repositories>
     <repository>
-      <id>central</id>
-      <!-- This should be at top, it makes maven try the central repo first and then others and hence faster dep resolution -->
-      <name>Maven Repository</name>
-      <url>https://repo1.maven.org/maven2</url>
-      <releases>
+            <id>acceldata repo</id>
+            <name>acceldata repo</name>
+            <url>https://repo1.acceldata.dev/repository/odp-staging-central/</url>
+            <releases>
         <enabled>true</enabled>
       </releases>
       <snapshots>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
       </snapshots>
-    </repository>
+	</repository>
     <repository>
-      <id>apache-repo</id>
-      <name>Apache Repository</name>
-      <url>https://repository.apache.org/content/repositories/releases</url>
-      <releases>
+            <id>acceldata staging repo</id>
+            <name>acceldata staging repo</name>
+            <url>https://repo1.acceldata.dev/repository/odp-staging-central/</url>
+            <releases>
         <enabled>true</enabled>
       </releases>
       <snapshots>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
       </snapshots>
     </repository>
   </repositories>
@@ -1322,10 +1337,10 @@
 
   <profiles>
     <profile>
-      <id>hadoop2</id>
+      <id>hadoop3</id>
       <properties>
-        <hadoop.major-minor.version>2.7</hadoop.major-minor.version>
-        <hadoop.version>2.7.3</hadoop.version>
+        <hadoop.major-minor.version>3</hadoop.major-minor.version>
+        <hadoop.version>3.4.3.3.4.3.0-1</hadoop.version>
       </properties>
     </profile>
     <profile>
@@ -1351,10 +1366,11 @@
         <module>thriftserver/client</module>
       </modules>
     </profile>
+    <!-- Commenting out as we dont support spark2
     <profile>
       <id>spark2</id>
       <properties>
-        <spark.version>2.4.5</spark.version>
+        <spark.version>4.1.2.3.4.3.0-1</spark.version>
         <java.version>1.8</java.version>
         <py4j.version>0.10.9</py4j.version>
         <json4s.version>3.5.3</json4s.version>
@@ -1364,14 +1380,14 @@
         </spark.bin.download.url>
       </properties>
     </profile>
-
+    -->
     <profile>
       <id>spark3</id>
       <properties>
-        <spark.version>3.5.6</spark.version>
+        <spark.version>4.1.2.3.4.3.0-1</spark.version>
         <hadoop.major-minor.version>3</hadoop.major-minor.version>
-        <hadoop.version>3.3.4</hadoop.version>
-        <java.version>1.8</java.version>
+        <hadoop.version>3.4.3.3.4.3.0-1</hadoop.version>
+        <java.version>11</java.version>
         <py4j.version>0.10.9.7</py4j.version>
         <json4s.version>3.7.0-M11</json4s.version>
         <netty.version>4.1.96.Final</netty.version>
@@ -1379,9 +1395,27 @@
         <jackson-databind.version>2.15.2</jackson-databind.version>
         <spark.bin.name>spark-${spark.version}-bin-hadoop${hadoop.major-minor.version}</spark.bin.name>
         <spark.bin.download.url>
-          https://archive.apache.org/dist/spark/spark-${spark.version}/${spark.bin.name}.tgz
+          https://mirror.odp.acceldata.dev/ODP/standalone/3.4.3.0-1/spark-${spark.version}-bin-${hadoop.version}.tgz
         </spark.bin.download.url>
         <skipPySpark2Tests>true</skipPySpark2Tests>
+      </properties>
+    </profile>
+
+    <profile>
+      <id>spark4</id>
+      <properties>
+        <spark.version>4.1.2.3.4.3.0-1</spark.version>
+        <java.version>17</java.version>
+        <py4j.version>0.10.9.7</py4j.version>
+        <json4s.version>3.7.0-M11</json4s.version>
+        <netty.version>4.1.132.Final</netty.version>
+        <scala.binary.version>2.13</scala.binary.version>
+        <scala.version>2.13.17</scala.version>
+        <spark.scala.binary.version>2.13</spark.scala.binary.version>
+        <spark.bin.name>spark-${spark.version}-bin-hadoop${hadoop.major-minor.version}</spark.bin.name>
+        <spark.bin.download.url>
+          https://mirror.odp.acceldata.dev/ODP/standalone/3.4.3.0-1/spark-${spark.version}-bin-${hadoop.version}.tgz
+        </spark.bin.download.url>
       </properties>
     </profile>
 
