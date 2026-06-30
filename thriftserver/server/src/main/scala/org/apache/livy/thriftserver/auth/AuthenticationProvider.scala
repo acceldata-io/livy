@@ -43,7 +43,7 @@ object AuthenticationProvider {
  * An implementation of [[PasswdAuthenticationProvider]] doing nothing.
  */
 class NoneAuthenticationProvider extends PasswdAuthenticationProvider {
-  override def Authenticate(user: String, password: String): Unit = {
+  override def authenticate(user: String, password: String): Unit = {
     // Do nothing.
   }
 }
@@ -69,7 +69,7 @@ class CustomAuthenticationProvider(conf: LivyConf) extends PasswdAuthenticationP
     }
   }
 
-  override def Authenticate(user: String, password: String): Unit = {
-    provider.Authenticate(user, password)
+  override def authenticate(user: String, password: String): Unit = {
+    provider.authenticate(user, password)
   }
 }
