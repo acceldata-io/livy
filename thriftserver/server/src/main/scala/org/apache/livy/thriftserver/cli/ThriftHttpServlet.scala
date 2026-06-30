@@ -272,7 +272,7 @@ class ThriftHttpServlet(
     if (!authType.equalsIgnoreCase(HiveAuthConstants.AuthTypes.NOSASL.toString)) {
       try {
         val provider = AuthenticationProvider.getAuthenticationProvider(authType, livyConf)
-        provider.Authenticate(userName, getPassword(request, authType))
+        provider.authenticate(userName, getPassword(request, authType))
       } catch {
         case e: Exception => throw new HttpAuthenticationException(e)
       }
