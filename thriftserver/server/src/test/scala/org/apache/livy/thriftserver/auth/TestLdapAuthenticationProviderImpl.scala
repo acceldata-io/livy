@@ -26,7 +26,6 @@ import org.apache.directory.server.core.annotations.ContextEntry
 import org.apache.directory.server.core.annotations.CreateDS
 import org.apache.directory.server.core.annotations.CreatePartition
 import org.apache.directory.server.core.integ.AbstractLdapTestUnit
-import org.apache.directory.server.core.integ.FrameworkRunner
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
@@ -37,7 +36,6 @@ import org.apache.livy.LivyConf
 /**
  * This unit test verifies the functionality of LdapAuthenticationProviderImpl.
  */
-@RunWith(classOf[FrameworkRunner])
 @CreateLdapServer(transports = Array(
   new CreateTransport(
     protocol = "LDAP",
@@ -68,7 +66,7 @@ class TestLdapAuthenticationProviderImpl extends AbstractLdapTestUnit {
   def setup(): Unit = {
     livyConf.set(LivyConf.AUTH_LDAP_BASE_DN, "dc=example,dc=com")
     livyConf.set(LivyConf.AUTH_LDAP_URL, String.format("ldap://%s:%s", "localhost",
-      AbstractLdapTestUnit.getLdapServer.getPort.toString))
+      AbstractLdapTestUnit.ldapServer.getPort.toString))
   }
 
   @Test
@@ -78,7 +76,7 @@ class TestLdapAuthenticationProviderImpl extends AbstractLdapTestUnit {
 
     try {
       handler = new LdapAuthenticationProviderImpl(livyConf)
-      handler.Authenticate(user, pwd)
+      handler.authenticate(user, pwd)
     } catch {
       case e: AuthenticationException =>
         val message = String.format("Authentication failed for user '%s'",
@@ -95,7 +93,7 @@ class TestLdapAuthenticationProviderImpl extends AbstractLdapTestUnit {
     livyConf.set(LivyConf.THRIFT_LDAP_AUTHENTICATION_USERFILTER, "bjones,jake")
     try {
       handler = new LdapAuthenticationProviderImpl(livyConf)
-      handler.Authenticate(user, pwd)
+      handler.authenticate(user, pwd)
     } catch {
       case e: AuthenticationException =>
         val message = String.format("Authentication failed for user '%s'",
@@ -111,7 +109,7 @@ class TestLdapAuthenticationProviderImpl extends AbstractLdapTestUnit {
 
     try {
       handler = new LdapAuthenticationProviderImpl(livyConf)
-      handler.Authenticate(wrongUser, pwd)
+      handler.authenticate(wrongUser, pwd)
     } catch {
       case ex: AuthenticationException =>
       // Expected
@@ -127,7 +125,7 @@ class TestLdapAuthenticationProviderImpl extends AbstractLdapTestUnit {
 
     try {
       handler = new LdapAuthenticationProviderImpl(livyConf)
-      handler.Authenticate(user, wrongPwd)
+      handler.authenticate(user, wrongPwd)
     } catch {
       case ex: AuthenticationException =>
       // Expected
@@ -144,7 +142,7 @@ class TestLdapAuthenticationProviderImpl extends AbstractLdapTestUnit {
 
     try {
       handler = new LdapAuthenticationProviderImpl(livyConf)
-      handler.Authenticate(user, pwd)
+      handler.authenticate(user, pwd)
     } catch {
       case ex: AuthenticationException =>
       // Expected

@@ -45,9 +45,20 @@ class SparkInterpreter(protected override val conf: SparkConf) extends AbstractS
   private def intp: IMain = sparkILoop.intp.asInstanceOf[IMain]
 
   private val interpretPreambleMethod: java.lang.reflect.Method = {
-    val m = classOf[ILoop].getDeclaredMethod("interpretPreamble")
-    m.setAccessible(true)
-    m
+    try {
+      val m = classOf[ILoop].getDeclaredMethod("interpretPreamble")
+      m.setAccessible(true)
+      m
+    } catch {
+      case e: NoSuchMethodException =>
+        val scalaVersion = scala.util.Properties.versionNumberString
+        throw new IllegalStateException(
+          s"""Livy SparkInterpreter is incompatible with Scala $scalaVersion:
+             |expected private method `interpretPreamble` on ${classOf[ILoop].getName}.
+             |This usually means Livy's scala.version drifted from Spark's."""
+            .stripMargin.replaceAll("\n", " "),
+          e)
+    }
   }
 
   override def start(): Unit = {

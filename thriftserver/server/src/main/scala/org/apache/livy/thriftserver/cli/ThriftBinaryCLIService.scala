@@ -23,7 +23,13 @@ import java.util.concurrent._
 import javax.net.ssl.SSLServerSocket
 
 import org.apache.hive.service.cli.HiveSQLException
+import org.apache.hive.service.cli.SessionHandle
+import org.apache.hive.service.rpc.thrift.TDownloadDataReq
+import org.apache.hive.service.rpc.thrift.TDownloadDataResp
+import org.apache.hive.service.rpc.thrift.TUploadDataReq
+import org.apache.hive.service.rpc.thrift.TUploadDataResp
 import org.apache.hive.service.server.ThreadFactoryWithGarbageCleanup
+import org.apache.thrift.TException
 import org.apache.thrift.TProcessorFactory
 import org.apache.thrift.protocol.{TBinaryProtocol, TProtocol}
 import org.apache.thrift.server.{ServerContext, TServer, TServerEventHandler, TThreadPoolServer}
@@ -98,20 +104,12 @@ class ThriftBinaryCLIService(override val cliService: LivyCLIService, val oomHoo
       }
       // Server args
       val maxMessageSize = livyConf.getInt(LivyConf.THRIFT_MAX_MESSAGE_SIZE)
-      val requestTimeout =
-        livyConf.getTimeAsMs(LivyConf.THRIFT_LOGIN_TIMEOUT).asInstanceOf[Int]
-      val beBackoffSlotLength =
-        livyConf.getTimeAsMs(LivyConf.THRIFT_LOGIN_BEBACKOFF_SLOT_LENGTH).asInstanceOf[Int]
       val sargs = new TThreadPoolServer.Args(serverSocket)
         .processorFactory(processorFactory)
         .transportFactory(transportFactory)
         .protocolFactory(new TBinaryProtocol.Factory)
         .inputProtocolFactory(
           new TBinaryProtocol.Factory(true, true, maxMessageSize, maxMessageSize))
-        .requestTimeout(requestTimeout)
-        .requestTimeoutUnit(TimeUnit.MILLISECONDS)
-        .beBackoffSlotLength(beBackoffSlotLength)
-        .beBackoffSlotLengthUnit(TimeUnit.MILLISECONDS)
         .executorService(executorService)
       // TCP Server
       server = new TThreadPoolServer(sargs)
@@ -173,5 +171,33 @@ class ThriftBinaryCLIService(override val cliService: LivyCLIService, val oomHoo
     server.stop()
     server = null
     info("Thrift server has stopped")
+  }
+
+  @throws[TException]
+  override def UploadData(req: TUploadDataReq): TUploadDataResp = {
+    val resp = new TUploadDataResp
+    try {
+      val sessionHandle = new SessionHandle(req.getSessionHandle)
+      cliService.uploadData()
+    } catch {
+      case e: Exception =>
+        warn("Error UploadData: ", e)
+        resp.setStatus(HiveSQLException.toTStatus(e))
+    }
+    resp
+  }
+
+  @throws[TException]
+  def DownloadData(req: TDownloadDataReq): TDownloadDataResp = {
+    val resp = new TDownloadDataResp
+    try {
+      val sessionHandle = new SessionHandle(req.getSessionHandle)
+      cliService.downloadData()
+    } catch {
+      case e: Exception =>
+        warn("Error download data: ", e)
+        resp.setStatus(HiveSQLException.toTStatus(e))
+    }
+    resp
   }
 }
