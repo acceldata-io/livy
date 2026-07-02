@@ -138,7 +138,8 @@ public class SparkEntries {
       Class.forName("org.apache.hadoop.hive.conf.HiveConf");
       Class.forName("org.apache.spark.sql.hive.HiveSessionStateBuilder");
       return true;
-    } catch (ClassNotFoundException e) {
+    } catch (ClassNotFoundException | NoClassDefFoundError e) {
+      LOG.warn("Hive classes not present on classpath; falling back to in-memory catalog", e);
       return false;
     }
   }
