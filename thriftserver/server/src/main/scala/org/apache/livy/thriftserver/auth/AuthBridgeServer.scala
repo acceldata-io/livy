@@ -236,6 +236,7 @@ sealed class TUGIAssumingProcessor(
       } catch {
         case te: TException => throw new RuntimeException(te)
       }
+      return
     }
     AuthBridgeServer.authenticationMethod.set(UserGroupInformation.AuthenticationMethod.KERBEROS)
     if (AuthMethod.TOKEN.getMechanismName.equalsIgnoreCase(mechanismName)) {
@@ -256,12 +257,8 @@ sealed class TUGIAssumingProcessor(
         debug(s"Set remoteUser : ${AuthBridgeServer.remoteUser.get}")
         clientUgi.doAs(new PrivilegedExceptionAction[Boolean]() {
           override def run: Boolean = try {
-            try {
-              wrapped.process(inProt, outProt)
-              return true
-            } catch {
-              case te: TException => throw new RuntimeException(te)
-            }
+            wrapped.process(inProt, outProt)
+            return true
           } catch {
             case te: TException => throw new RuntimeException(te)
           }
