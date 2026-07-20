@@ -22,11 +22,11 @@ SCRIPT_DIR=$(realpath "$(dirname ${0})")
 echo "Running from ${SCRIPT_DIR}/${0}"
 
 APACHE_ARCHIVE_ROOT=http://archive.apache.org/dist
-HADOOP_VERSION=3.3.1
+HADOOP_VERSION=3.4.3
 HADOOP_PACKAGE="hadoop-${HADOOP_VERSION}.tar.gz"
-HIVE_VERSION=2.3.9
+HIVE_VERSION=4.1.0
 HIVE_PACKAGE="apache-hive-${HIVE_VERSION}-bin.tar.gz"
-SPARK_VERSION=3.2.3
+SPARK_VERSION=4.1.2
 SPARK_PACKAGE="spark-${SPARK_VERSION}-bin-without-hadoop.tgz"
 SCALA_VERSION=2.12
 LIVY_VERSION="0.9.0-incubating_${SCALA_VERSION}"
