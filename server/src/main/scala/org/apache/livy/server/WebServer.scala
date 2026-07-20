@@ -34,7 +34,8 @@ class WebServer(livyConf: LivyConf, var host: String, var port: Int) extends Log
   server.setStopTimeout(1000)
   server.setStopAtShutdown(true)
 
-  val (connector, protocol) = Option(livyConf.get(LivyConf.SSL_KEYSTORE)) match {
+  val (connector, protocol) = Option(livyConf.get(LivyConf.SSL_KEYSTORE))
+    .filter(_.trim.nonEmpty) match {
     case None =>
       val http = new HttpConfiguration()
       http.setRequestHeaderSize(livyConf.getInt(LivyConf.REQUEST_HEADER_SIZE))
