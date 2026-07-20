@@ -129,8 +129,8 @@
     <hadoop.major-minor.version>3</hadoop.major-minor.version>
     <hadoop.version>3.4.3.3.4.3.0-1</hadoop.version>
     <!-- scala2.11 -->
-    <scala.binary.version>2.11</scala.binary.version>
-    <scala.version>2.11.12</scala.version>
+    <scala.binary.version>2.12</scala.binary.version>
+    <scala.version>2.12.18</scala.version>
     <!-- spark2 -->
     <spark.version>3.5.8.3.4.3.0-1</spark.version>
     <java.version>11</java.version>
@@ -1323,17 +1323,10 @@
 
   <profiles>
     <profile>
-      <id>hadoop2</id>
+      <id>hadoop3</id>
       <properties>
         <hadoop.major-minor.version>3</hadoop.major-minor.version>
         <hadoop.version>3.4.3.3.4.3.0-1</hadoop.version>
-      </properties>
-    </profile>
-    <profile>
-      <id>scala-2.11</id>
-      <properties>
-        <scala.binary.version>2.11</scala.binary.version>
-        <scala.version>2.11.12</scala.version>
       </properties>
     </profile>
     <profile>

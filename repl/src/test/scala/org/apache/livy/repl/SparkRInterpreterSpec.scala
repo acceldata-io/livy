@@ -24,7 +24,7 @@ import org.scalatest._
 
 import org.apache.livy.rsc.driver.SparkEntries
 
-class SparkRInterpreterSpec extends BaseInterpreterSpec {
+private class SparkRInterpreterSpec extends BaseInterpreterSpec {
 
   implicit val formats = DefaultFormats
 
@@ -38,7 +38,7 @@ class SparkRInterpreterSpec extends BaseInterpreterSpec {
     val sparkConf = new SparkConf()
     SparkRInterpreter(sparkConf, new SparkEntries(sparkConf))
   }
-
+  /** Commenting out these tests as we will not have R/SParkR in all the platform by default
   it should "execute `1 + 2` == 3" in withInterpreter { interpreter =>
     val response = interpreter.execute("1 + 2")
     response should equal (Interpreter.ExecuteSuccess(
@@ -118,5 +118,5 @@ class SparkRInterpreterSpec extends BaseInterpreterSpec {
       TEXT_PLAIN -> "[1] \"a\""
     ))
   }
-
+  */
 }
