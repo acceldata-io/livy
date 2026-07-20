@@ -138,7 +138,7 @@
     <java.version>11</java.version>
     <py4j.version>0.10.9</py4j.version>
     <json4s.version>3.5.3</json4s.version>
-    <standalone.tarballs.url>https://mirror.odp.acceldata.dev/ODP/standalone/${odp.release.version}</standalone.tarballs.url>
+    <standalone.tarballs.url>https://mirror-stg.odp.acceldata.dev/ODP/standalone/${odp.release.version}</standalone.tarballs.url>
     <spark.bin.name>spark-3.5.5-bin-hadoop${hadoop.major-minor.version}</spark.bin.name>
     <spark.bin.download.url>
       ${standalone.tarballs.url}/spark-${spark.version}-bin-${hadoop.version}.tgz
