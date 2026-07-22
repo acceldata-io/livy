@@ -92,6 +92,7 @@
   </distributionManagement>
 
   <properties>
+    <odp.release.version>3.4.3.0-1</odp.release.version>
     <asynchttpclient.version>3.0.1</asynchttpclient.version>
     <commons.io.version>2.16.1</commons.io.version>
     <hadoop.scope>compile</hadoop.scope>
@@ -157,10 +158,10 @@
     <java.version>17</java.version>
     <py4j.version>0.10.9</py4j.version>
     <json4s.version>3.7.0-M11</json4s.version>
+    <standalone.tarballs.url>https://mirror-stg.odp.acceldata.dev/ODP/standalone/${odp.release.version}</standalone.tarballs.url>
     <spark.bin.name>spark-4.1.2-bin-hadoop${hadoop.major-minor.version}</spark.bin.name>
     <spark.bin.download.url>
-      https://mirror.odp.acceldata.dev/ODP/standalone/3.4.3.0-1/spark-${spark.version}-bin-${hadoop.version}.tgz
-    </spark.bin.download.url>
+      ${standalone.tarballs.url}/spark-${spark.version}-bin-${hadoop.version}.tgz    </spark.bin.download.url>
 
     <!--  used for testing, NCSARequestLog use it for access log  -->
     <livy.log.dir>${basedir}/target</livy.log.dir>
