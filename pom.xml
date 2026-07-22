@@ -77,6 +77,19 @@
     </mailingList>
   </mailingLists>
 
+  <distributionManagement>
+    <repository>
+      <id>nexus-releases</id>
+      <name>Releases</name>
+      <url>https://repo1.acceldata.dev/repository/odp-staging-release/</url>
+    </repository>
+    <snapshotRepository>
+      <id>nexus-snapshots</id>
+      <name>Snapshot</name>
+      <url>https://repo1.acceldata.dev/repository/odp-staging-snapshot/</url>
+    </snapshotRepository>
+  </distributionManagement>
+
   <properties>
     <asynchttpclient.version>2.10.1</asynchttpclient.version>
     <hadoop.scope>compile</hadoop.scope>
