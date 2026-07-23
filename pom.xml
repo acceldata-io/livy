@@ -196,6 +196,7 @@
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
 
+        <okio.version>3.4.0</okio.version>
   </properties>
 
   <repositories>
@@ -299,6 +300,18 @@
 
   <dependencyManagement>
     <dependencies>
+<dependency>
+                <groupId>com.squareup.okio</groupId>
+                <artifactId>okio</artifactId>
+                <version>${okio.version}</version>
+            </dependency>
+
+<dependency>
+                <groupId>com.squareup.okio</groupId>
+                <artifactId>okio-jvm</artifactId>
+                <version>${okio.version}</version>
+            </dependency>
+
 
       <dependency>
         <groupId>ch.qos.reload4j</groupId>
