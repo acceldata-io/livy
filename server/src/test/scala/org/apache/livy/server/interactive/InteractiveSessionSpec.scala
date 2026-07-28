@@ -323,6 +323,33 @@ class InteractiveSessionSpec extends FunSpec
     }
   }
 
+  describe("default spark application name") {
+    it("should use livy-session prefix by default") {
+      val conf = new LivyConf(false)
+      InteractiveSession.defaultSparkAppName(42, conf) should be("livy-session-42")
+    }
+
+    it("should use configured app name prefix") {
+      val conf = new LivyConf(false)
+        .set(LivyConf.SERVER_APP_NAME_PREFIX, "my-cluster")
+      InteractiveSession.defaultSparkAppName(3, conf) should be("my-cluster-3")
+    }
+
+    it("should fall back to livy-session when prefix is empty") {
+      val conf = new LivyConf(false)
+        .set(LivyConf.SERVER_APP_NAME_PREFIX, "")
+      InteractiveSession.defaultSparkAppName(5, conf) should be("livy-session-5")
+    }
+
+    it("should not override user-provided spark.app.name") {
+      val conf = new LivyConf(false)
+        .set(LivyConf.SERVER_APP_NAME_PREFIX, "my-cluster")
+      val props = scala.collection.mutable.Map("spark.app.name" -> "user-provided-name")
+      props.getOrElseUpdate("spark.app.name", InteractiveSession.defaultSparkAppName(1, conf))
+      props("spark.app.name") should be("user-provided-name")
+    }
+  }
+
   describe("InteractiveSession") {
     it("should inherit the default YARN queue from LivyConf when request queue is empty") {
       val testLivyConf = new LivyConf()
