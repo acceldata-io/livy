@@ -92,15 +92,16 @@
  </distributionManagement>
 
   <properties>
+    <odp.release.version>3.4.3.0-1</odp.release.version>
     <asynchttpclient.version>2.10.1</asynchttpclient.version>
     <hadoop.scope>compile</hadoop.scope>
     <slf4j.version>1.7.36</slf4j.version>
     <reload4j.version>1.2.26</reload4j.version>
     <spark.scala-2.11.version>2.4.5</spark.scala-2.11.version>
-    <spark.scala-2.12.version>3.5.8.3.4.3.0-1</spark.scala-2.12.version>
+    <spark.scala-2.12.version>3.5.8.${odp.release.version}</spark.scala-2.12.version>
     <spark.version>${spark.scala-2.12.version}</spark.version>
     <kubernetes.client.version>5.6.0</kubernetes.client.version>
-    <hive.version>4.1.0.3.4.3.0-1</hive.version>
+    <hive.version>4.1.0.${odp.release.version}</hive.version>
     <commons-codec.version>1.15</commons-codec.version>
     <commons-lang3.version>3.17.0</commons-lang3.version>
     <hadoop-thirdparty.version>1.4.0</hadoop-thirdparty.version>
@@ -142,12 +143,12 @@
     <!-- profile controlled parameters, we are setting the defaults here so we can run "mvn package" with default profile values -->
     <!-- hadoop2 -->
     <hadoop.major-minor.version>3</hadoop.major-minor.version>
-    <hadoop.version>3.4.3.3.4.3.0-1</hadoop.version>
+    <hadoop.version>3.4.3.${odp.release.version}</hadoop.version>
     <!-- scala2.11 -->
     <scala.binary.version>2.12</scala.binary.version>
     <scala.version>2.12.18</scala.version>
     <!-- spark2 -->
-    <spark.version>3.5.8.3.4.3.0-1</spark.version>
+    <spark.version>3.5.8.${odp.release.version}</spark.version>
     <java.version>11</java.version>
     <py4j.version>0.10.9</py4j.version>
     <json4s.version>3.5.3</json4s.version>
@@ -172,7 +173,7 @@
     <ldap-api.version>2.1.2</ldap-api.version>
 
     <curator.version>2.7.1</curator.version>
-    <zookeeper.version>3.8.6.3.4.3.0-1</zookeeper.version>
+    <zookeeper.version>3.8.6.${odp.release.version}</zookeeper.version>
 
     <!--
       Properties for the copyright header style checks. Modules that use the ASF header
@@ -1365,7 +1366,7 @@
       <id>hadoop3</id>
       <properties>
         <hadoop.major-minor.version>3</hadoop.major-minor.version>
-        <hadoop.version>3.4.3.3.4.3.0-1</hadoop.version>
+        <hadoop.version>3.4.3.${odp.release.version}</hadoop.version>
       </properties>
     </profile>
     <profile>
@@ -1402,9 +1403,9 @@
     <profile>
       <id>spark3</id>
       <properties>
-        <spark.version>3.5.8.3.4.3.0-1</spark.version>
+        <spark.version>3.5.8.${odp.release.version}</spark.version>
         <hadoop.major-minor.version>3</hadoop.major-minor.version>
-        <hadoop.version>3.4.3.3.4.3.0-1</hadoop.version>
+        <hadoop.version>3.4.3.${odp.release.version}</hadoop.version>
         <java.version>17</java.version>
         <py4j.version>0.10.9.7</py4j.version>
         <json4s.version>3.7.0-M11</json4s.version>
