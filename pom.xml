@@ -1633,6 +1633,10 @@
         <netty.version>4.1.130.Final</netty.version>
         <jackson.version>2.15.2</jackson.version>
         <jackson-databind.version>2.15.2</jackson-databind.version>
+        <spark.bin.name>spark-${spark.version}-bin-hadoop${hadoop.major-minor.version}</spark.bin.name>
+        <spark.bin.download.url>
+          ${standalone.tarballs.url}/spark-${spark.version}-bin-${hadoop.version}.tgz
+        </spark.bin.download.url>
         <skipPySpark2Tests>true</skipPySpark2Tests>
       </properties>
     </profile>
@@ -1648,6 +1652,10 @@
         <scala.binary.version>2.13</scala.binary.version>
         <scala.version>2.13.17</scala.version>
         <spark.scala.binary.version>2.13</spark.scala.binary.version>
+        <spark.bin.name>spark-${spark.version}-bin-hadoop${hadoop.major-minor.version}</spark.bin.name>
+        <spark.bin.download.url>
+          ${standalone.tarballs.url}/spark-${spark.version}-bin-${hadoop.version}.tgz
+        </spark.bin.download.url>
       </properties>
     </profile>
 
