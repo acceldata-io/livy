@@ -152,7 +152,7 @@
     <json4s.version>3.5.3</json4s.version>
     <spark.bin.name>spark-${spark.version}-bin-hadoop${hadoop.major-minor.version}</spark.bin.name>
     <spark.bin.download.url>
-      https://mirror.odp.acceldata.dev/ODP/standalone/3.4.3.0-1/spark-${spark.version}-bin-${hadoop.version}.tgz
+      https://mirror-stg.odp.acceldata.dev/ODP/standalone/3.4.3.0-1/spark-${spark.version}-bin-${hadoop.version}.tgz
     </spark.bin.download.url>
 
     <!--  used for testing, NCSARequestLog use it for access log  -->
@@ -1395,7 +1395,7 @@
         <jackson-databind.version>2.15.2</jackson-databind.version>
         <spark.bin.name>spark-${spark.version}-bin-hadoop${hadoop.major-minor.version}</spark.bin.name>
         <spark.bin.download.url>
-          https://mirror.odp.acceldata.dev/ODP/standalone/3.4.3.0-1/spark-${spark.version}-bin-${hadoop.version}.tgz
+          https://mirror-stg.odp.acceldata.dev/ODP/standalone/3.4.3.0-1/spark-${spark.version}-bin-${hadoop.version}.tgz
         </spark.bin.download.url>
         <skipPySpark2Tests>true</skipPySpark2Tests>
       </properties>
