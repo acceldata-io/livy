@@ -1578,7 +1578,7 @@
     <profile>
       <id>spark3</id>
       <properties>
-        <spark.version>3.5.5.${odp.release.version}</spark.version>
+        <spark.version>3.3.3.${odp.release.version}</spark.version>
         <java.version>11</java.version>
         <py4j.version>0.10.9.7</py4j.version>
         <json4s.version>3.7.0-M11</json4s.version>
