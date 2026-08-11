@@ -91,6 +91,10 @@
   </distributionManagement>
 
   <properties>
+    <!-- Base ODP version without the build-number suffix. Kept separate so the
+         packaging sed (3.4.3.0-1 -> 3.4.3.0-<bn>) cannot rewrite the ODP-<base>-1
+         segment of the standalone tarball URL. -->
+    <odp.base.version>3.4.3.0</odp.base.version>
     <odp.release.version>3.4.3.0-1</odp.release.version>
     <asynchttpclient.version>2.10.1</asynchttpclient.version>
     <hadoop.scope>compile</hadoop.scope>
@@ -152,7 +156,7 @@
     <json4s.version>3.5.3</json4s.version>
     <spark.bin.name>spark-${spark.version}-bin-hadoop${hadoop.major-minor.version}</spark.bin.name>
     <spark.bin.download.url>
-      https://mirror-stg.odp.acceldata.dev/ODP/standalone/3.4.3.0-1/spark-${spark.version}-bin-${hadoop.version}.tgz
+      https://mirror-stg.odp.acceldata.dev/staging/ODP-${odp.base.version}-1/${odp.release.version}/standalone_tarballs/spark-${spark.version}-bin-${hadoop.version}.tgz
     </spark.bin.download.url>
 
     <!--  used for testing, NCSARequestLog use it for access log  -->
@@ -1395,7 +1399,7 @@
         <jackson-databind.version>2.15.2</jackson-databind.version>
         <spark.bin.name>spark-${spark.version}-bin-hadoop${hadoop.major-minor.version}</spark.bin.name>
         <spark.bin.download.url>
-          https://mirror-stg.odp.acceldata.dev/ODP/standalone/3.4.3.0-1/spark-${spark.version}-bin-${hadoop.version}.tgz
+          https://mirror-stg.odp.acceldata.dev/staging/ODP-${odp.base.version}-1/${odp.release.version}/standalone_tarballs/spark-${spark.version}-bin-${hadoop.version}.tgz
         </spark.bin.download.url>
         <skipPySpark2Tests>true</skipPySpark2Tests>
       </properties>
