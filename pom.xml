@@ -1394,7 +1394,6 @@
         <netty.version>4.1.96.Final</netty.version>
         <jackson.version>2.15.2</jackson.version>
         <jackson-databind.version>2.15.2</jackson-databind.version>
-        <standalone.tarballs.url>https://mirror-stg.odp.acceldata.dev/ODP/standalone/${odp.release.version}</standalone.tarballs.url>
         <spark.bin.name>spark-${spark.version}-bin-hadoop${hadoop.major-minor.version}</spark.bin.name>
         <spark.bin.download.url>
           ${standalone.tarballs.url}/spark-${spark.version}-bin-${hadoop.version}.tgz
