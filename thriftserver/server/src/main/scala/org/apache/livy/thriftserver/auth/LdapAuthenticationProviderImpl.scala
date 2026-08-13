@@ -30,7 +30,7 @@ class LdapAuthenticationProviderImpl(val conf: LivyConf) extends PasswdAuthentic
   private val searchFactory: DirSearchFactory = new LdapSearchFactory()
 
   @throws[AuthenticationException]
-  def Authenticate(user: String, password: String): Unit = {
+  def authenticate(user: String, password: String): Unit = {
     createDirSearch(user, password)
     applyFilter(user)
   }
