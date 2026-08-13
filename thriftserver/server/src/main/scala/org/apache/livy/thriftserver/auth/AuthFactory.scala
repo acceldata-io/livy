@@ -189,7 +189,7 @@ class PlainServerCallbackHandler(authMethodStr: String, livyConf: LivyConf)
     }
     val provider =
       AuthenticationProvider.getAuthenticationProvider(authMethod.getAuthMethod, livyConf)
-    provider.Authenticate(username, password)
+    provider.authenticate(username, password)
     if (ac != null) {
       ac.setAuthorized(true)
     }
