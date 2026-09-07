@@ -22,7 +22,7 @@
 
   <groupId>org.apache.livy</groupId>
   <artifactId>livy-main</artifactId>
-  <version>0.8.0.3.3.6.5-SNAPSHOT</version>
+  <version>0.8.0.3.3.6.6-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>Livy Project Parent POM</name>
   <description>Livy Project</description>
@@ -92,7 +92,7 @@
   </distributionManagement>
 
   <properties>
-    <odp.release.version>3.3.6.5-SNAPSHOT</odp.release.version>
+    <odp.release.version>3.3.6.6-SNAPSHOT</odp.release.version>
     <asynchttpclient.version>3.0.1</asynchttpclient.version>
     <commons.io.version>2.16.1</commons.io.version>
     <hadoop.scope>compile</hadoop.scope>
