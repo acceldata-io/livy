@@ -119,6 +119,8 @@
     <metrics.version>4.2.30</metrics.version>
     <mockito.version>1.10.19</mockito.version>
     <netty.version>4.2.17.Final</netty.version>
+    <!-- Hadoop-transitive leftover in server jars/ (not rsc 4.2.x). -->
+    <netty41.version>4.1.137.Final</netty41.version>
     <jline3.version>3.30.14</jline3.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <scalatest.version>3.0.8</scalatest.version>
