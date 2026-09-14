@@ -110,6 +110,7 @@
     <httpcore.version>4.4.4</httpcore.version>
     <okio.version>3.4.0</okio.version>
     <jackson.version>2.21.4</jackson.version>
+    <jackson-annotations.version>2.21</jackson-annotations.version>
     <jackson-databind.version>${jackson.version}</jackson-databind.version>
     <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
     <jetty.version>9.4.57.v20241219</jetty.version>
@@ -317,7 +318,7 @@
       <dependency>
         <groupId>com.fasterxml.jackson.core</groupId>
         <artifactId>jackson-annotations</artifactId>
-        <version>${jackson.version}</version>
+        <version>${jackson-annotations.version}</version>
       </dependency>
 
       <dependency>
