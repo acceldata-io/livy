@@ -318,6 +318,14 @@ object LivyConf {
   val KUBERNETES_EXECUTOR_TRACKING_ENABLED =
     Entry("livy.server.kubernetes.executor-tracking.enabled", true)
 
+  // Whether Livy fetches the driver pod's Kubernetes logs each poll cycle. When
+  // disabled, Livy still polls pod state and diagnostics, but /sessions/:id/log and
+  // /batches/:id/log will not include any Kubernetes driver log lines at all. Useful
+  // when driver logs are collected externally and the repeated pods/<driver>/log calls
+  // are not needed.
+  val KUBERNETES_DRIVER_LOG_POLLING_ENABLED =
+    Entry("livy.server.kubernetes.driver-log-polling.enabled", true)
+
   // How long to check livy session leakage.
   val KUBERNETES_APP_LEAKAGE_CHECK_TIMEOUT =
     Entry("livy.server.kubernetes.app-leakage.check-timeout", "600s")
