@@ -136,6 +136,13 @@
     </dependency>
 
     <dependency>
+      <groupId>com.fasterxml.woodstox</groupId>
+      <artifactId>woodstox-core</artifactId>
+      <version>5.4.0</version>
+      <scope>${hadoop.scope}</scope>
+    </dependency>
+
+    <dependency>
       <groupId>org.apache.curator</groupId>
       <artifactId>curator-recipes</artifactId>
       <version>${curator.version}</version>
