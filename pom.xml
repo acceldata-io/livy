@@ -159,7 +159,7 @@
     <apacheds.version>2.0.0.AM27</apacheds.version>
     <ldap-api.version>2.1.2</ldap-api.version>
 
-    <curator.version>2.7.1</curator.version>
+    <curator.version>5.2.0</curator.version>
     <zookeeper.version>3.5.10.${odp.release.version}</zookeeper.version>
 
     <!--
