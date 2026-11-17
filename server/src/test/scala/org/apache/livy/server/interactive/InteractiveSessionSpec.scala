@@ -365,7 +365,7 @@ class InteractiveSessionSpec extends FunSpec
 
       val s = InteractiveSession.create(
         101, None, "systest", None, testLivyConf, accessManager,
-        req, mock[SessionStore], None, None, None, mockClient
+        req, mock[SessionStore], None, None, mockClient
       )
 
       s.queue shouldBe Some("livy-default-queue")
@@ -385,7 +385,7 @@ class InteractiveSessionSpec extends FunSpec
 
       val s = InteractiveSession.create(
         102, None, "systest", None, testLivyConf, accessManager,
-        req, mock[SessionStore], None, None, None, mockClient
+        req, mock[SessionStore], None, None, mockClient
       )
 
       s.queue shouldBe Some("user-custom-queue")
@@ -403,7 +403,7 @@ class InteractiveSessionSpec extends FunSpec
 
       val s = InteractiveSession.create(
         103, None, "systest", None, testLivyConf, accessManager,
-        req, mock[SessionStore], None, None, None, Some(mock[RSCClient])
+        req, mock[SessionStore], None, None, Some(mock[RSCClient])
       )
 
       s.queue shouldBe Some("livy-default-queue")
